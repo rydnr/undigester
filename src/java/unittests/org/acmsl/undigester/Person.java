@@ -87,10 +87,10 @@ public class Person
         final String phone,
         final String address)
     {
-        inmutableSetParent(parent);
-        inmutableSetName(name);
-        inmutableSetPhone(phone);
-        inmutableSetAddress(address);
+        immutableSetParent(parent);
+        immutableSetName(name);
+        immutableSetPhone(phone);
+        immutableSetAddress(address);
     }
 
     /**
@@ -111,7 +111,7 @@ public class Person
      * Specifies the parent.
      * @param parent the parent.
      */
-    private void inmutableSetParent(final Person parent)
+    private void immutableSetParent(final Person parent)
     {
         m__Parent = parent;
     }
@@ -122,7 +122,7 @@ public class Person
      */
     protected void setParent(final Person parent)
     {
-        inmutableSetParent(parent);
+        immutableSetParent(parent);
     }
 
     /**
@@ -138,7 +138,7 @@ public class Person
      * Specifies the name.
      * @param name the name.
      */
-    private void inmutableSetName(final String name)
+    private void immutableSetName(final String name)
     {
         m__strName = name;
     }
@@ -149,7 +149,7 @@ public class Person
      */
     protected void setName(final String name)
     {
-        inmutableSetName(name);
+        immutableSetName(name);
     }
 
     /**
@@ -165,7 +165,7 @@ public class Person
      * Specifies the phone.
      * @param phone the phone.
      */
-    private void inmutableSetPhone(final String phone)
+    private void immutableSetPhone(final String phone)
     {
         m__strPhone = phone;
     }
@@ -176,7 +176,7 @@ public class Person
      */
     protected void setPhone(final String phone)
     {
-        inmutableSetPhone(phone);
+        immutableSetPhone(phone);
     }
 
     /**
@@ -192,7 +192,7 @@ public class Person
      * Specifies the address.
      * @param address the address.
      */
-    private void inmutableSetAddress(final String address)
+    private void immutableSetAddress(final String address)
     {
         m__strAddress = address;
     }
@@ -203,7 +203,7 @@ public class Person
      */
     protected void setAddress(final String address)
     {
-        inmutableSetAddress(address);
+        immutableSetAddress(address);
     }
 
     /**

@@ -954,8 +954,9 @@ public class TreeNode
                     {
                         t_sbResult.append(
                             specializedToXml(
-                                (Collection) specializedChildren.get(
-                                    t_strSpecializedKey),
+                                (Collection)
+                                    specializedChildren.get(
+                                        t_strSpecializedKey),
                                 t_strSpecializedKey,
                                 stringValidator));
 

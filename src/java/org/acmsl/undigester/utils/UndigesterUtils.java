@@ -682,6 +682,11 @@ public abstract class UndigesterUtils
                 t_CurrentItem = array[t_iIndex].getClass();
             }
 
+            if  (t_CurrentItem instanceof Class)
+            {
+                t_CurrentItem = ((Class) t_CurrentItem).getName();
+            }
+
             t_sbResult.append(t_CurrentItem);
 
             if  (t_iIndex < array.length - 1)

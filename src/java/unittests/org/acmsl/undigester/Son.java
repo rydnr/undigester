@@ -66,8 +66,7 @@ public class Son
      * @param name the name.
      */
     public Son(
-        final Person parent,
-        final String name)
+        final Person parent, final String name)
     {
         super(parent, name, parent.getPhone(), parent.getAddress());
     }

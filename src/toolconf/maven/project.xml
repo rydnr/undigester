@@ -88,36 +88,197 @@
       <artifactId>commons</artifactId>
       <version>0.5.5b5</version>
       <url>http://www.acm-sl.org/</url>
+      <properties>
+        <required.to.compile>true</required.to.compile>
+        <required.to.run>true</required.to.run>
+        <required.to.test>true</required.to.test>
+        <required.to.build>true</required.to.build>
+      </properties>
     </dependency>
 
     <dependency>
-      <id>commons-collections</id>
+      <groupId>commons-collections</groupId>
+      <artifactId>commons-collections</artifactId>
       <version>2.1</version>
       <url>http://jakarta.apache.org/commons/</url>
+      <properties>
+        <required.to.compile>true</required.to.compile>
+        <required.to.run>true</required.to.run>
+        <required.to.test>true</required.to.test>
+        <required.to.build>false</required.to.build>
+      </properties>
     </dependency>
 
     <dependency>
-      <id>commons-beanutils</id>
+      <groupId>commons-beanutils</groupId>
+      <artifactId>commons-beanutils</artifactId>
       <version>1.6.1</version>
       <url>http://jakarta.apache.org/commons/</url>
+      <properties>
+        <required.to.compile>true</required.to.compile>
+        <required.to.run>true</required.to.run>
+        <required.to.test>true</required.to.test>
+        <required.to.build>false</required.to.build>
+      </properties>
     </dependency>
 
     <dependency>
-      <id>oro</id>
+      <groupId>oro</groupId>
+      <artifactId>oro</artifactId>
       <version>2.0.7</version>
       <url>http://jakarta.apache.org/oro/</url>
+      <properties>
+        <required.to.compile>false</required.to.compile>
+        <required.to.run>true</required.to.run>
+        <required.to.test>true</required.to.test>
+        <required.to.build>true</required.to.build>
+      </properties>
     </dependency>
 
     <dependency>
-      <id>commons-logging</id>
+      <groupId>commons-logging</groupId>
+      <artifactId>commons-logging</artifactId>
       <version>1.0.3</version>
       <url>http://jakarta.apache.org/commons/</url>
+      <properties>
+        <required.to.compile>true</required.to.compile>
+        <required.to.run>true</required.to.run>
+        <required.to.test>true</required.to.test>
+        <required.to.build>true</required.to.build>
+      </properties>
     </dependency>
 
     <dependency>
-      <id>junit</id>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
       <version>3.8.1</version>
       <url>http://www.junit.org</url>
+      <properties>
+        <required.to.compile>false</required.to.compile>
+        <required.to.run>false</required.to.run>
+        <required.to.test>true</required.to.test>
+        <required.to.build>false</required.to.build>
+      </properties>
+    </dependency>
+
+    <dependency>
+      <groupId>ant</groupId>
+      <artifactId>ant-xercesImpl</artifactId>
+      <version>1.6.1</version>
+      <url>http://ant.apache.org</url>
+      <properties>
+        <required.to.compile>false</required.to.compile>
+        <required.to.run>false</required.to.run>
+        <required.to.test>false</required.to.test>
+        <required.to.build>true</required.to.build>
+      </properties>
+    </dependency>
+
+    <dependency>
+      <groupId>ant</groupId>
+      <artifactId>ant-xml-apis</artifactId>
+      <version>1.6.1</version>
+      <url>http://ant.apache.org</url>
+      <properties>
+        <required.to.compile>false</required.to.compile>
+        <required.to.run>false</required.to.run>
+        <required.to.test>false</required.to.test>
+        <required.to.build>true</required.to.build>
+      </properties>
+    </dependency>
+
+    <dependency>
+      <groupId>ant</groupId>
+      <artifactId>ant_doxygen</artifactId>
+      <version>1.4</version>
+      <url>http://ant.apache.org</url>
+      <properties>
+        <required.to.compile>false</required.to.compile>
+        <required.to.run>false</required.to.run>
+        <required.to.test>false</required.to.test>
+        <required.to.build>true</required.to.build>
+      </properties>
+    </dependency>
+
+    <dependency>
+      <groupId>antmake</groupId>
+      <artifactId>antmake</artifactId>
+      <version>0.1.9b1</version>
+      <url>http://maven.acm-sl.org/antmake</url>
+      <properties>
+        <required.to.compile>false</required.to.compile>
+        <required.to.run>false</required.to.run>
+        <required.to.test>false</required.to.test>
+        <required.to.build>true</required.to.build>
+      </properties>
+    </dependency>
+
+    <dependency>
+      <groupId>contractchecker</groupId>
+      <artifactId>contractchecker</artifactId>
+      <version>0.4.7</version>
+      <url>http://maven.acm-sl.org/contractchecker</url>
+      <properties>
+        <required.to.compile>false</required.to.compile>
+        <required.to.run>false</required.to.run>
+        <required.to.test>false</required.to.test>
+        <required.to.build>true</required.to.build>
+      </properties>
+    </dependency>
+
+    <dependency>
+      <groupId>aspectj</groupId>
+      <artifactId>aspectjrt</artifactId>
+      <version>1.2</version>
+      <url>http://www.aspectj.org</url>
+      <properties>
+        <required.to.compile>false</required.to.compile>
+        <required.to.run>false</required.to.run>
+        <required.to.test>false</required.to.test>
+        <required.to.build>true</required.to.build>
+        <injected.by>contractchecker</injected.by>
+      </properties>
+    </dependency>
+
+    <dependency>
+      <groupId>aspectj</groupId>
+      <artifactId>aspectjtools</artifactId>
+      <version>1.2</version>
+      <url>http://www.aspectj.org</url>
+      <properties>
+        <required.to.compile>false</required.to.compile>
+        <required.to.run>false</required.to.run>
+        <required.to.test>false</required.to.test>
+        <required.to.build>true</required.to.build>
+        <injected.by>contractchecker</injected.by>
+      </properties>
+    </dependency>
+
+    <dependency>
+      <groupId>qdox</groupId>
+      <artifactId>qdox</artifactId>
+      <version>1.3</version>
+      <url>http://qdox.codehaus.org</url>
+      <properties>
+        <required.to.compile>false</required.to.compile>
+        <required.to.run>false</required.to.run>
+        <required.to.test>false</required.to.test>
+        <required.to.build>true</required.to.build>
+        <injected.by>contractchecker</injected.by>
+      </properties>
+    </dependency>
+
+    <dependency>
+      <groupId>junitdoclet</groupId>
+      <artifactId>junitdoclet-acmsl</artifactId>
+      <version>1.0.2</version>
+      <url>http://www.junitdoclet.org</url>
+      <properties>
+        <required.to.compile>false</required.to.compile>
+        <required.to.run>false</required.to.run>
+        <required.to.test>true</required.to.test>
+        <required.to.build>true</required.to.build>
+      </properties>
     </dependency>
 
   </dependencies>

@@ -287,11 +287,20 @@ public class GetNextRule
     {
         try 
         {
-            Object t_Object = 
-                reflectionUtils.invokeMethod(
-                    object,
-                    methodName,
-                    args);
+            Object t_Object = null;
+
+            if  (methodName == null)
+            {
+                t_Object = object;
+            }
+            else
+            {
+                t_Object = 
+                    reflectionUtils.invokeMethod(
+                        object,
+                        methodName,
+                        args);
+            }
 
             if  (t_Object != null) 
             {

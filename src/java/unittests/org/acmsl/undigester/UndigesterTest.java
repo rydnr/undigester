@@ -76,7 +76,7 @@ Copyright (C) 2002  ObjectFab GmbH  (http://www.objectfab.de/)
 This library is  free software; you can redistribute it and/or
 modify  it under the  terms of  the  GNU Lesser General Public
 License as published  by the  Free Software Foundation; either
-1version 2.1  of the  License, or  (at your option)  any  later
+version 2.1  of the  License, or  (at your option)  any  later
 version.
 
 This library is distributed in the hope that it will be useful,
@@ -515,6 +515,56 @@ extends TestCase
             fail("" + undigesterException.getMessage());
         }
     }
+    /**
+     * Tests UndigesterTest#unparse().
+     */
+    public void testTopLevelArrayUnparse()
+    {
+        Person t_Person1 = new Person("cust1", "phone1", "addr1");
+        Person t_Person2 = new Person("cust2", "phone2", "addr2");
+        Collection t_cPeople = new ArrayList();
+        t_cPeople.add(t_Person1);
+        t_cPeople.add(t_Person2);
+        Undigester t_Undigester = new Undigester(t_cPeople);
+        t_Undigester.addRule(
+            new GetNameRule(t_cPeople.getClass().getName(), "customer-list", null));
+        GetNextRule t_CustomersRule =
+            new GetNextRule(
+                t_cPeople.getClass().getName(),
+                "toArray",
+                new Object[] { new Person[0] },
+                (GetNextRule) null);
+        t_Undigester.addRule(t_CustomersRule);
+        t_Undigester.addRule(
+            new GetNameRule(
+                  t_cPeople.getClass().getName()
+                + "/" + t_Person1.getClass().getName(),
+                "customer",
+                t_CustomersRule));
+        t_Undigester.addRule(
+            new GetPropertyRule(
+                  t_cPeople.getClass().getName()
+                + "/" + t_Person1.getClass().getName(),
+                "name",
+                t_CustomersRule));
+        try 
+        {
+            String t_strResult = t_Undigester.unparse();
+
+            assertTrue(t_strResult != null);
+            assertEquals(
+                  "<customer-list>"
+                + "<customer name=\"cust1\"/><customer name=\"cust2\"/>"
+                + "</customer-list>",
+                t_strResult);
+        }
+        catch  (final UndigesterException undigesterException)
+        {
+            fail("" + undigesterException.getMessage());
+        }
+
+    }
+
   // JUnitDoclet end class
   
   /**

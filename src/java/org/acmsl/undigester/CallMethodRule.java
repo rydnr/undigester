@@ -483,7 +483,7 @@ public class CallMethodRule
 
         for  (int t_iArgIndex = 0; t_iArgIndex < args.length; t_iArgIndex++)
         {
-            if  (t_iArgIndex > 0);
+            if  (t_iArgIndex > 0)
             {
                 t_sbResult.append(",");
             }

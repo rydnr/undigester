@@ -97,14 +97,14 @@ public class Undigester
      */
     public Undigester(final Object root)
     {
-        inmutableSetRoot(root);
+        immutableSetRoot(root);
     }
 
     /**
      * Specifies the root of the object graph to serialize.
      * @param root such root.
      */
-    private void inmutableSetRoot(final Object root)
+    private void immutableSetRoot(final Object root)
     {
         m__Root = root;
     }
@@ -115,7 +115,7 @@ public class Undigester
      */
     protected void setRoot(final Object root)
     {
-        inmutableSetRoot(root);
+        immutableSetRoot(root);
     }
 
     /**
@@ -652,8 +652,6 @@ public class Undigester
         final EqualityComparator equalityComparator)
       throws  UndigesterException
     {
-        Object t_Key = undigesterUtils.buildPatternKey(nodeId);
-
         Collection t_cRules =
             getRules(
                 treeNode, 
