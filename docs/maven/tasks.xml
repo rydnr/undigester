@@ -14,11 +14,7 @@
 
       <subsection name="0.6">
         <p>
-          <ul>
-            <li>
-              Add new features as they are needed by WebExtension.
-            </li>
-          </ul>
+          Add new features as they are needed by WebExtension.
         </p>
       </subsection>
       <subsection name="0.6b2">
@@ -26,7 +22,7 @@
           <ul>
             <li>
               Fix bug #<a
-              href="http://lite/bugzilla/show_bug.cgi?id=123">123</a>.
+              href="${issue.url}123">123</a>.
             </li>
             <li>
               Support for rule sets to group rules of a common DTD
@@ -37,12 +33,7 @@
       </subsection>
       <subsection name="0.6b1">
         <p>
-          <ul>
-            <li>
-              Fix bug #<a
-              href="http://lite/bugzilla/show_bug.cgi?id=122">122</a>.
-            </li>
-          </ul>
+          Fix bug #<a href="${issue.url}122">122</a>.
         </p>
       </subsection>
       <subsection name="0.5">
@@ -65,31 +56,19 @@
       </subsection>
       <subsection name="0.5b14">
         <p>
-          <ul>
-            <li>
-              Make UndigesterTest#testSimpleServletAndWelcomeFile()
-              test cases work.
-            </li>
-          </ul>
+          Make UndigesterTest#testSimpleServletAndWelcomeFile()
+          test cases work.
         </p>
       </subsection>
       <subsection name="0.5b10">
         <p>
-          <ul>
-            <li>
-              Make UndigesterTest test cases work.
-            </li>
-          </ul>
+          Make UndigesterTest test cases work.
         </p>
       </subsection>
       <subsection name="0.4.2">
         <p>
-          <ul>
-            <li>
-              Use <b>ContractChecker</b> and fix any precondition
-              violations.
-            </li>
-          </ul>
+          Use <b>ContractChecker</b> and fix any precondition
+          violations.
         </p>
       </subsection>
       <subsection name="0.3.6">

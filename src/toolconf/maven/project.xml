@@ -363,7 +363,9 @@
     <!-- We're getting out-of-memory
     <report>maven-linkcheck-plugin</report>
     -->
+    <!-- We're getting vdoclet error
     <report>maven-tasklist-plugin</report>
+    -->
     <!--
       JellyDoc makes the site generation crash if no errors are
       found. It's better to do it manually.
