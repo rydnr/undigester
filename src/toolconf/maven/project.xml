@@ -137,6 +137,26 @@
       <excludes>
         <exclude>**/RepositoryTest.java</exclude>
       </excludes>
+      <resources>
+        <resource>
+          <directory>${basedir}/dependencies/lib/java</directory>
+          <includes>
+            <include>*</include>
+          </includes>
+        </resource>
+        <resource>
+          <directory>${basedir}/dependencies/lib/java/runtime</directory>
+          <includes>
+            <include>*</include>
+          </includes>
+        </resource>
+        <resource>
+          <directory>${basedir}/dependencies/lib/java/unittest</directory>
+          <includes>
+            <include>*</include>
+          </includes>
+        </resource>
+      </resources>
     </unitTest>
               
     <!-- J A R  R E S O U R C E S -->
