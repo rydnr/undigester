@@ -22,23 +22,23 @@
     XML format, using a Digester-like syntax.
   </description>
 
-  <url>http://192.168.0.2/projects/undigester/</url>
-  <logo>http://192.168.0.2/projects/images/webextension.png</logo>
-  <issueTrackingUrl>http://192.168.0.2/bugzilla/reports.cgi?product=undigester&amp;output=most_doomed&amp;links=1&amp;banner=1&amp;quip=1</issueTrackingUrl>
-  <siteAddress>liteserver</siteAddress>
+  <url>http://www.acm-sl.org/undigester/</url>
+  <logo>http://www.acm-sl.org/images/webextension.png</logo>
+  <issueTrackingUrl>http://bugzilla.acm-sl.org/buglist.cgi?query_format=specific&amp;order=relevance+desc&amp;bug_status=__all__&amp;product=Undigester</issueTrackingUrl>
+  <siteAddress>www.acm-sl.org</siteAddress>
   <siteDirectory>
-    /home/httpd/projects/undigester
+    /home/anoncvs/undigester
   </siteDirectory>
   <distributionDirectory>
-    /home/httpd/projects/undigester/builds/
+    /home/anoncvs/undigester/builds/
   </distributionDirectory>
 
   <repository>
     <connection>
-      scm:cvs:pserver:anoncvs@192.168.0.2:/home/cvs:undigester
+      scm:cvs:pserver:anoncvs@cvs.acm-sl.org:/var/cvs:undigester
     </connection>
     <url>
-      http://192.168.0.2/viewcvs/viewcvs.cgi/undigester
+      http://cvs.acm-sl.org/viewcvs/viewcvs.cgi/undigester
     </url>
   </repository>
 
@@ -48,25 +48,25 @@
     <mailingList>
       <name>Undigester User List</name>
       <subscribe>
-        users-subscribe@undigester.our.home
+        users-subscribe@undigester.acm-sl.org
       </subscribe>
       <unsubscribe>
-        users-unsubscribe@undigester.our.home
+        users-unsubscribe@undigester.acm-sl.org
       </unsubscribe>
       <archive>
-        http://lite.our.home/mailinglists/users@undigester.our.home/
+        http://maven.acm-sl.org/mailinglists/users@undigester.acm-sl.org/
       </archive>
     </mailingList>
     <mailingList>
       <name>Undigester Developer List</name>
       <subscribe>
-        dev-subscribe@undigester.our.home
+        dev-subscribe@undigester.acm-sl.org
       </subscribe>
       <unsubscribe>
-        dev-unsubscribe@undigester.our.home
+        dev-unsubscribe@undigester.acm-sl.org
       </unsubscribe>
       <archive>
-        http://192.168.0.2/mailinglists/dev@undigester.our.home/
+        http://maven.acm-sl.org/mailinglists/dev@undigester.acm-sl.org/
       </archive>
     </mailingList>
   </mailingLists>
@@ -124,7 +124,7 @@
 
     <sourceDirectory>../../java</sourceDirectory>
 
-    <unitTestSourceDirectory>../../java/unittests</unitTestSourceDirectory>
+    <unitTestSourceDirectory>../../java/</unitTestSourceDirectory>
     <integrationUnitTestSourceDirectory/>
 
     <aspectSourceDirectory/>
@@ -158,13 +158,14 @@
   <reports>
     <report>maven-changelog-plugin</report>
     <report>maven-changes-plugin</report>
+    <!-- We're getting out-of-memory
     <report>maven-checkstyle-plugin</report>
-
+    -->
     <!--
       PMD makes the site generation crash if no errors are
       found. It's better to do it manually.
-    -->
     <report>maven-pmd-plugin</report>
+    -->
     <report>maven-developer-activity-plugin</report>
     <report>maven-file-activity-plugin</report>
     <report>maven-javadoc-plugin</report>
@@ -172,7 +173,9 @@
     <report>maven-junit-report-plugin</report>
     <report>maven-jxr-plugin</report>
     <report>maven-license-plugin</report>
+    <!-- We're getting out-of-memory
     <report>maven-linkcheck-plugin</report>
+    -->
     <report>maven-tasklist-plugin</report>
     <!--
       JellyDoc makes the site generation crash if no errors are
