@@ -1,0 +1,31 @@
+<web-app>
+  <display-name>DisplayName</display-name>
+  <servlet>
+    <servlet-name>action</servlet-name>
+    <servlet-class>org.apache.struts.action.ActionServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>bshservlet</servlet-name>
+    <servlet-class>bsh.servlet.BshServlet</servlet-class>
+  </servlet>
+  <welcome-file-list>
+    <welcome-file>index.jsp</welcome-file>
+  </welcome-file-list>
+</web-app>
+
+WebApp                    : (GetNameRule    "web-app")
+                            (GetNextRule    "getDisplayName")
+                            (GetNextRule    "getServletArray")
+WebApp/IdText             : (GetNameRule    "display-name"
+                            (CallMethodRule "getText")
+WebApp/Servlet            : (GetNameRule    "servlet")
+                            (GetNextRule    "getServletName")
+WebApp/Servlet/IdText     : (GetNameRule    "servlet-name")
+                            (CallMethodRule "getText")
+WebApp/Servlet            : (GetNextRule    "getServletClass")
+WebApp/Servlet/IdText     : 
+[WebApp, Servlet, IdText] : CallMethodRule "getText"
+[WebApp]                  : GetNextRule    "getWelcomeFileArray" "welcome-file-list"
+[WebApp, IdText]          : GetNameRule    "welcome-file"
+[WebApp, IdText]          : CallMethodRule "getText"
+

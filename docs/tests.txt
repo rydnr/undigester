@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<!DOCTYPE undigestertest
+  <!ELEMENT undigestertest (phone-element*, house-element*)>
+  <!ATTLIST 
+>
+<undigestertest><phone-element><phone-element><phone-element><house-element><phone-element>"p3_1"/><phone-element></phone-element></phone-element></house-element></phone-element></phone-element></phone-element></undigestertest>

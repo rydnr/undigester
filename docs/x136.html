@@ -1,0 +1,329 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML
+><HEAD
+><TITLE
+>Competitors</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.7"><LINK
+REL="HOME"
+TITLE="Developing Undigester"
+HREF="index.html"><LINK
+REL="PREVIOUS"
+TITLE="Development"
+HREF="x85.html"><LINK
+REL="NEXT"
+TITLE="Technical documentation"
+HREF="x166.html"></HEAD
+><BODY
+CLASS="sect1"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+SUMMARY="Header navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>Developing Undigester</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="x85.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+></TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="x166.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="sect1"
+><H1
+CLASS="sect1"
+><A
+NAME="AEN136"
+></A
+>4. Competitors</H1
+><P
+>&#13;      This project introduced an interesting situation. Before
+      starting it, I looked in the Internet for already existing free
+      software libraries that provided the functional requirements
+      described in this document. Unfortunately, I wasn't able to find
+      any, but obviously I was wrong since there was at least one:
+      <SPAN
+CLASS="emphasis"
+><I
+CLASS="emphasis"
+>Jakarta Commons' Betwixt</I
+></SPAN
+>.
+    </P
+><DIV
+CLASS="sect2"
+><H2
+CLASS="sect2"
+><A
+NAME="AEN140"
+></A
+>4.1. Jakarta Commons Betwixt</H2
+><P
+>&#13;        I wasn't aware of the fact that Betwixt existed until a friend
+        of mine noticed if Betwixt and gave me that information. That
+        happened just after most of the desired features were
+        accomplished.
+      </P
+><P
+>&#13;        Ironically, the bad news are not really that bad. It's just
+        knowing that I should have taken a deeper look at the
+        existing alternatives. But afterwards, the "discover" was
+        interesting, since I could evaluate if
+        <SPAN
+CLASS="emphasis"
+><I
+CLASS="emphasis"
+>Undigester</I
+></SPAN
+> introduced any advantage over
+        <SPAN
+CLASS="emphasis"
+><I
+CLASS="emphasis"
+>Betwixt</I
+></SPAN
+>, and if not no more effort would be
+        dedicated to improving it.
+      </P
+><P
+>&#13;        The decision is not fully taken, tough. It's clear that
+        <SPAN
+CLASS="emphasis"
+><I
+CLASS="emphasis"
+>Betwixt</I
+></SPAN
+> is a more mature module, and would
+        have been used from the beginning, but I'm not sure it follows
+        the same design as <SPAN
+CLASS="emphasis"
+><I
+CLASS="emphasis"
+>Digester</I
+></SPAN
+>. Although it
+        provides direct compatibility with <SPAN
+CLASS="emphasis"
+><I
+CLASS="emphasis"
+>Digester</I
+></SPAN
+>
+        rules, what is very useful, we'll keep
+        <SPAN
+CLASS="emphasis"
+><I
+CLASS="emphasis"
+>Undigester</I
+></SPAN
+> as XML serialization API because
+        it follows all ACM-SL standard and allows reuse of
+        <SPAN
+CLASS="emphasis"
+><I
+CLASS="emphasis"
+>Digester</I
+></SPAN
+>'s <SPAN
+CLASS="emphasis"
+><I
+CLASS="emphasis"
+>know-how</I
+></SPAN
+>.
+      </P
+><P
+>&#13;        In fact, the main application of
+        <SPAN
+CLASS="emphasis"
+><I
+CLASS="emphasis"
+>Undigester</I
+></SPAN
+>,
+        <SPAN
+CLASS="emphasis"
+><I
+CLASS="emphasis"
+>WebExtension</I
+></SPAN
+>, showed that
+        <SPAN
+CLASS="emphasis"
+><I
+CLASS="emphasis"
+>Undigester</I
+></SPAN
+> wasn't usable to serialize
+        <SPAN
+CLASS="emphasis"
+><I
+CLASS="emphasis"
+>web.xml</I
+></SPAN
+> information. The problem was
+        related to the serialization algorithm itself, and its
+        solution was not easy. Under such circumstances,
+        <SPAN
+CLASS="emphasis"
+><I
+CLASS="emphasis"
+>WebExtension</I
+></SPAN
+> begun testing how to use
+        <SPAN
+CLASS="emphasis"
+><I
+CLASS="emphasis"
+>Betwixt</I
+></SPAN
+>. After some attempts, the results
+        were not satisfactory for <SPAN
+CLASS="emphasis"
+><I
+CLASS="emphasis"
+>WebExtension</I
+></SPAN
+>
+        requirements. Without detailing the issues too much, it seemed
+        that <SPAN
+CLASS="emphasis"
+><I
+CLASS="emphasis"
+>Betwixt</I
+></SPAN
+> doesn't provide an easy way
+        of including PCDATA information provided by a class, without
+        explicit element for such class. Since some of the classes
+        used in <SPAN
+CLASS="emphasis"
+><I
+CLASS="emphasis"
+>WebExtension</I
+></SPAN
+> are reused and
+        expected to be serialized in different ways depending on the
+        information itself (not just the class), I found no way to
+        make it work. Additionally, at the time of this writing, after
+        searching at <SPAN
+CLASS="emphasis"
+><I
+CLASS="emphasis"
+>Betwixt</I
+></SPAN
+> mailing lists, I
+        haven't been able to figure out how to omit an element
+        representing an array or collection, only when such collection
+        is empty.
+      </P
+><P
+>&#13;        So I decided again to focus the effort on debugging the
+        recursive algorithm to find out how to solve
+        <SPAN
+CLASS="emphasis"
+><I
+CLASS="emphasis"
+>Undigester</I
+></SPAN
+> bug.
+      </P
+></DIV
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+SUMMARY="Footer navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="x85.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="index.html"
+ACCESSKEY="H"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="x166.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Development</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+>&nbsp;</TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Technical documentation</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

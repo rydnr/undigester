@@ -1,0 +1,457 @@
+<!--
+ @license
+                        Undigester
+
+    Copyright (C) 2004  Jose San Leandro Armend&aacute;riz
+                        jsanleandro@yahoo.es
+                        chousz@yahoo.com
+
+    This library is free software; you can redistribute it and/or
+    modify it under the terms of the GNU General Public
+    License as published by the Free Software Foundation; either
+    version 2 of the License, or (at your option) any later version.
+
+    This library is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+    General Public License for more details.
+
+    You should have received a copy of the GNU General Public
+    License along with this library; if not, write to the Free Software
+    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+
+
+    Thanks to ACM S.L. for distributing this library under the GPL license.
+    Contact info: jsr000@terra.es
+    Postal Address: c/Playa de Lagoa, 1
+                    Urb. Valdecaba&ntilde;as
+                    Boadilla del monte
+                    28660 Madrid
+                    Spain
+
+ @header
+  
+   Filename: $RCSfile$
+
+   Author: Jose San Leandro Armendariz
+
+   Description: Applies specific AspectJ code.
+
+   Last modified by: $Author$ at $Date$
+
+   File version: $Revision$
+
+   Project version: $Name$
+                    ("Name" means no concrete version has been checked out)
+
+   $Id$
+
+-->
+
+<!--
+ Applies specific AspectJ code.
+ @author <a href="mailto:jsanleandro@yahoo.es">Jose San Leandro Armendariz</a>
+ @version $Revision$
+ @default description
+-->
+<project name="${project.name}" default="description" basedir="../../..">
+
+    <!--
+     Displays the build script purpose, and the folder structure required.
+     @return the output of the described message.
+    -->
+    <target
+      name="description"
+      description="Displays the build script purpose.">
+
+      <echo>
+        Applies AspectJ code.
+      </echo>
+    </target>
+
+    <!--
+     Defines the required variables in all tasks.
+     @calls property to initialize the required properties.
+     @calls path to define each one of the class and source paths.
+     @return the asignment of correct values to the required properties.
+    -->
+    <target name="init.properties">
+
+      <!--
+       Libraries base folder.
+      -->
+      <property name="lib.dir" value="lib"/>
+
+      <!--
+       Runtime libraries base folder.
+      -->
+      <property name="runtime.lib.dir" value="${lib.dir}/runtime"/>
+
+      <!--
+       Unit tests libraries base folder.
+      -->
+      <property name="unittests.lib.dir" value="${lib.dir}/unittest"/>
+
+      <!--
+       Compilation and distribution base folder.
+      -->
+      <property name="dist.dir" value="dist"/>
+
+      <!--
+       Classes folder.
+      -->
+      <property name="classes.dir" value="${dist.dir}/classes"/>
+
+      <!--
+       Base folder for all kind of source files.
+      -->
+      <property name="src.dir" value="src"/>
+
+      <!--
+       Java source folder.
+      -->
+      <property name="java.src.dir" value="${src.dir}/java"/>
+
+      <!--
+       AspectJ source folder.
+      -->
+      <property name="aspectj.src.dir" value="${src.dir}/aspectj"/>
+
+      <!--
+       Java source path.
+      -->
+      <path id="java.source.path">
+
+        <!--
+         Source files.
+        -->
+        <pathelement location="${java.src.dir}"/>
+
+      </path>
+
+      <!--
+       Compilation and distribution base folder.
+      -->
+      <property name="dist.dir" value="${project.base.folder}/dist"/>
+
+      <!--
+       Where the .class files are created while compiling.
+      -->
+      <property name="classes.dir" value="${dist.dir}/classes"/>
+
+      <!--
+       Java libraries folder. Files under this folder are needed for
+       compiling the Java sources and also at runtime.
+      -->
+      <property name="java.lib.dir" value="${lib.dir}/java"/>
+
+      <!--
+       Java libraries needed ONLY while developing the project,
+       required by development tools, not required at build or
+       runtime.
+      -->
+      <property
+        name="java.development.lib.dir"
+        value="${java.lib.dir}/development"/>
+
+      <!--
+       Java libraries needed ONLY for building the project, not required
+       at runtime.
+      -->
+      <property
+        name="java.build.lib.dir"
+        value="${java.lib.dir}/build"/>
+
+      <!--
+       Java libraries needed ONLY at runtime, not required for building
+       the project.
+      -->   
+      <property
+          name="java.runtime.lib.dir"
+          value="${java.lib.dir}/runtime"/>
+
+      <!--
+       Java libraries needed ONLY for unit tests, not required
+       for building the project.
+      -->   
+      <property
+          name="java.unit.test.lib.dir"
+          value="${java.lib.dir}/unittest"/>
+
+      <!--
+       Java compilation classpath.
+      -->
+      <path id="java.compile.class.path">
+
+        <!--
+         Project own classes.
+        -->
+        <pathelement location="${classes.dir}"/>
+
+        <!--
+         Java libraries needed only by development add-ins.
+        -->
+        <fileset dir="${java.development.lib.dir}">
+
+          <include name="*.jar"/>
+
+        </fileset>
+
+        <!--
+         Java libraries needed for compilation and at runtime.
+        -->
+        <fileset dir="${java.lib.dir}">
+
+          <include name="*.jar"/>
+
+        </fileset>
+
+        <!--
+         Java libraries needed only for compilation.
+        -->
+        <fileset dir="${java.build.lib.dir}">
+
+          <include name="*.jar"/>
+
+        </fileset>
+
+        <!--
+         Java libraries needed compiling the unit tests.
+        -->
+        <fileset dir="${java.unit.test.lib.dir}">
+
+            <include name="*.jar"/>
+
+        </fileset>
+
+
+      </path>
+
+      <!--
+       Using externally-defined properties.
+      -->
+      <property file="src/toolconf/ant/aspectj.properties"/>
+
+      <!--
+       Defines where to store the compiled classes for the generated sources.
+      -->
+      <property name="aspectj.classes.outputdir" value="output-classes"/>
+
+      <!--
+       Defines the classpath to use for executing AspectJ.
+      -->
+      <path id="aspectj.classpath">
+
+        <pathelement location="${classes.dir}"/>
+
+        <fileset dir="${java.development.lib.dir}">
+
+          <include name="*.jar"/>
+
+        </fileset>
+
+        <fileset dir="${java.lib.dir}">
+
+          <include name="*.jar"/>
+
+        </fileset>
+
+        <fileset dir="${java.runtime.lib.dir}">
+
+          <include name="*.jar"/>
+
+        </fileset>
+
+      </path>
+
+      <!--
+        Defines the classpath to use for declaring AspectJ.
+      -->
+      <path id="aspectj.declaration.classpath">
+
+        <path refid="aspectj.classpath"/>
+
+      </path>
+
+    </target>
+
+    <!--
+     Declares AspectJ task.
+     @return the correctly declared AspectJ task.
+    -->
+    <target name="declare.aspectj.task">
+
+      <description>Declares AspectJ task</description>
+
+      <!--
+       Defines the <i>AspectJ</i> task.
+      -->
+      <taskdef 
+        resource="org/aspectj/tools/ant/taskdefs/aspectjTaskdefs.properties"
+        classpathref="aspectj.classpath"/>
+
+    </target>
+
+    <!--
+     Cleans the list of aspects to weave
+     @return Cleaning up the argfile used by AspectJ.
+    -->
+    <target
+      name="clean"
+      depends="init.properties, declare.aspectj.task"
+      description="Cleans the list of aspects to weave">
+
+      <echo
+        message=""
+        file="${temp.folder}/aspects.txt"
+        append="false"/>
+
+    </target>
+
+    <!--
+     Executes AspectJ to enable access rules safety.
+     @return the result of enabling access protection.
+    -->
+    <target
+      name="enable.access.protection"
+      depends="init.properties, declare.aspectj.task"
+      description="Enables access rules safety">
+
+      <echo
+        message="${base.folder}${aspectj.src.dir}/aspects/org/acmsl/undigester/ChainableAccessing.aj"
+        file="${temp.folder}/aspects.txt"
+        append="true"/>
+
+      <echo
+        file="${temp.folder}/aspects.txt"
+        append="true">
+</echo>
+
+    </target>
+
+    <!--
+     Executes AspectJ to enable access rules safety.
+     @return the result of enabling access protection.
+    -->
+    <target
+      name="access.protection"
+      depends="init.properties, declare.aspectj.task, clean, enable.access.protection, compile.aspects"
+      description="Enables access rules safety"/>
+
+    <!--
+     Executes AspectJ to enable debugging.
+     @return the result of enabling debugging.
+    -->
+    <target
+      name="enable.debugging"
+      depends="init.properties, declare.aspectj.task"
+      description="Enables debugging">
+
+      <echo
+        message="${base.folder}${aspectj.src.dir}/aspects/org/acmsl/undigester/TreeNodeBodyDebugging.aj"
+        file="${temp.folder}/aspects.txt"
+        append="true"/>
+
+      <echo
+        file="${temp.folder}/aspects.txt"
+        append="true">
+</echo>
+
+    </target>
+
+    <!--
+     Executes AspectJ to enable debugging.
+     @return the result of enabling debugging.
+    -->
+    <target
+      name="debugging"
+      depends="init.properties, declare.aspectj.task, clean, enable.debugging, compile.aspects"
+      description="Enables debugging"/>
+
+    <!--
+     Executes AspectJ to enable tracing.
+     @return the result of enabling debugging.
+    -->
+    <target
+      name="enable.tracing"
+      depends="init.properties, declare.aspectj.task"
+      description="Enables tracing">
+
+      <echo
+        message="${base.folder}${aspectj.src.dir}/aspects/org/acmsl/undigester/Tracing.aj"
+        file="${temp.folder}/aspects.txt"
+        append="true"/>
+
+      <echo
+        file="${temp.folder}/aspects.txt"
+        append="true">
+</echo>
+
+    </target>
+
+    <!--
+     Executes AspectJ to enable tracing.
+     @return the result of enabling tracing.
+    -->
+    <target
+      name="tracing"
+      depends="init.properties, declare.aspectj.task, clean, enable.tracing, compile.aspects"
+      description="Enables tracing"/>
+
+    <!--
+     Compiles the aspects.
+    -->
+    <target
+      name="compile.aspects"
+      depends="init.properties, declare.aspectj.task"
+      description="Enables all aspects">
+
+      <!--
+       Executes AspectJ defining all its attributes and
+       content.
+      -->
+      <iajc
+        destdir="${classes.dir}"
+        argfiles="${temp.folder}/aspects.txt"
+        classpathref="java.compile.class.path">
+
+        <sourceroots>
+          <path refid="java.source.path"/>
+        </sourceroots>
+      </iajc>
+    </target>
+
+    <!--
+     Compiles the aspects.
+    -->
+    <target
+      name="jar.aspects"
+      depends="compile.aspects"
+      description="Creates a jar with the AspectJ-woven code.">
+
+      <ant
+        antfile="src/toolconf/ant/build.xml"
+        target="jar"
+        inheritAll="false"/>
+
+    </target>
+
+    <!--
+     Executes AspectJ to enable all defined aspects.
+     @return the result of enabling all aspects.
+    -->
+    <target
+      name="all.aspects"
+      depends="init.properties, declare.aspectj.task, clean, enable.access.protection, enable.debugging, enable.tracing, compile.aspects"
+      description="Enables all aspects"/>
+
+    <!--
+     Executes AspectJ to enable all defined aspects.
+     @return the result of enabling all aspects.
+    -->
+    <target
+      name="jar.all.aspects"
+      depends="all.aspects, jar.aspects"
+      description="Packages in a single jar all AspectJ-woven code"/>
+
+</project>

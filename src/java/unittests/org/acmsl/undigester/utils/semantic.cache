@@ -1,0 +1,14 @@
+;; Object semantic.cache
+;; SEMANTICDB Tags save file
+(semanticdb-project-database "semantic.cache"
+  :file "semantic.cache"
+  :tables (list 
+   (semanticdb-table "UtilsSuite.java"
+    :file "UtilsSuite.java"
+    :pointmax 3273
+    :major-mode 'jde-mode
+    :tokens '(("unittests.org.acmsl.undigester.utils" package nil nil nil [1379 1424]) ("junit.framework.TestSuite" include nil nil nil [1499 1532]) ("UtilsSuite" type "class" (("suite" function "TestSuite" nil ((typemodifiers "public" "static")) nil ((reparse-symbol . class_body_declarations)) [2831 3084]) ("main" function "void" (("args" variable "String[]" nil nil nil ((reparse-symbol . formal_parameter_list)) [3114 3127])) ((typemodifiers "public" "static")) nil ((reparse-symbol . class_body_declarations)) [3090 3270])) nil ((typemodifiers "public")) nil nil [2666 3272]))
+    :unmatched-syntax '((close-paren 3271 . 3272) (close-paren 3127 . 3128) (open-paren 3113 . 3114) (close-paren 2861 . 2862) (open-paren 2860 . 2861) (open-paren 2768 . 2769))
+    )
+   )
+  )

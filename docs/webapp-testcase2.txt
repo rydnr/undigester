@@ -1,0 +1,64 @@
+<web-app>
+  <display-name>DisplayName</display-name>
+  <servlet>
+    <servlet-name>action</servlet-name>
+    <servlet-class>org.apache.struts.action.ActionServlet</servlet-class>
+    <init-param>
+      <param-name>config</param-name>
+      <param-value>/WEB-INF/struts-config.xml</param-value>
+    </init-param>
+    <init-param>
+      <param-name>debug</param-name>
+      <param-value>3</param-value>
+    </init-param>
+    <init-param>
+      <param-name>detail</param-name>
+      <param-value>3</param-value>
+    </init-param>
+    <init-param>
+      <param-name>application</param-name>
+      <param-value>ApplicationResources</param-value>
+    </init-param>
+    <init-param>
+      <param-name>convertNull</param-name>
+      <param-value>true</param-value>
+    </init-param>
+    <load-on-startup>2</load-on-startup>
+  </servlet>
+  <servlet>
+    <servlet-name>bshservlet</servlet-name>
+    <servlet-class>bsh.servlet.BshServlet</servlet-class>
+  </servlet>
+  <welcome-file-list>
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>welcome.jsp</welcome-file>
+    <welcome-file>home.jsp</welcome-file>
+  </welcome-file-list>
+</web-app>
+
+[WebApp]                             : GetNameRule    "web-app"
+[WebApp]                             : GetNextRule    "getDisplayName"
+[WebApp, IdText]                     : GetNameRule    "display-name"
+[WebApp, IdText]                     : CallMethodRule "getText"
+[WebApp]                             : GetNextRule    "getServletArray"
+[WebApp, Servlet]                    : GetNameRule    "servlet"
+[WebApp, Servlet]                    : GetNextRule    "getServletName"
+[WebApp, Servlet, IdText]            : GetNameRule    "servlet-name"
+[WebApp, Servlet, IdText]            : CallMethodRule "getText"
+[WebApp, Servlet]                    : GetNextRule    "getServletClass"
+[WebApp, Servlet, IdText]            : GetNameRule    "servlet-class"
+[WebApp, Servlet, IdText]            : CallMethodRule "getText"
+[WebApp, Servlet]                    : GetNextRule    "getInitParamArray"
+[WebApp, Servlet, InitParam]         : GetNameRule    "init-param"
+[WebApp, Servlet, InitParam]         : GetNextRule    "getName"
+[WebApp, Servlet, InitParam, IdText] : GetNameRule    "name"
+[WebApp, Servlet, InitParam, IdText] : CallMethodRule "getText"
+[WebApp, Servlet, InitParam]         : GetNextRule    "getValue"
+[WebApp, Servlet, InitParam, IdText] : GetNameRule    "value"
+[WebApp, Servlet, InitParam, IdText] : CallMethodRule "getText"
+[WebApp, Servlet]                    : GetNextRule    "getLoadOnStartup"
+[WebApp, Servlet, IdText]            : GetNameRule    "load-on-startup"
+[WebApp, Servlet, IdText]            : CallMethodRule "getText"
+[WebApp]                             : GetNextRule    "getWelcomeFileArray" "welcome-file-list"
+[WebApp, IdText]                     : GetNameRule    "welcome-file"
+[WebApp, IdText]                     : CallMethodRule "getText"

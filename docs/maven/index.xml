@@ -1,0 +1,391 @@
+<?xml version="1.0"?>
+
+<!--DOCTYPE document-->
+  <!--ELEMENT document (properties, body)-->
+  <!--ELEMENT properties (title, author)-->
+  <!--ELEMENT title PCDATA #REQUIRED-->
+  <!--ELEMENT author PCDATA #REQUIRED-->
+  <!--ATTLIST author
+    email CDATA #REQUIRED-->
+  <!--ELEMENT body (section*)-->
+  <!--ELEMENT section (p*, table*, subsection*)-->
+  <!--ATTLIST section
+    name  CDATA #REQUIRED-->
+  <!--ELEMENT subsection ANY-->
+  <!--ATTLIST subsection
+    name CDATA #REQUIRED-->
+  <!--ELEMENT table ANY-->
+<document>
+
+  <properties>
+    <title>Overview</title>
+    <author email="jsanleandro@yahoo.es">Jose San Leandro</author>
+  </properties>
+
+  <body>
+
+    <section name="Overview">
+      <p>
+        <strong>Undigester</strong>
+         provides a Digester-like way of serializing arbitrary objects
+         to XML.
+      </p>
+      <subsection name="Status">
+        <p>
+          <b>Undigester</b> has been completely redesigned from
+          scratch, to improve and clean its behaviour and maintenance.
+          Current
+          version, <i>0.6b3</i>, is the result of a major refactoring
+          at design level of the 0.4 series.
+        </p>
+      </subsection>
+    </section>
+
+    <section name="News">
+      
+      <table>
+        <tr>
+          <td>
+            $Date$
+          </td>
+          <td>
+            Fixed bug #<a
+            href="http://lite/bugzilla/show_bug.cgi?id=123">123</a>.<br/>
+            Also, rules can be grouped together inside RuleSets, so
+            that complete DTD can be defined using single objects.
+          </td>
+        </tr>
+        <tr>
+          <td>
+            2004/03/22 07:47:08
+          </td>
+          <td>
+            Added support for choosing whether to output null
+            properties or not, in GetPropertyRule.
+          </td>
+        </tr>
+        <tr>
+          <td>
+            2004/03/22 06:33:47
+          </td>
+          <td>
+            WebExtension has unhidden bug 
+            #<a href="lite/bugzilla/show_bug.cgi?id=122">122</a>, which is
+            now solved.
+          </td>
+        </tr>
+        <tr>
+          <td>
+            2004/03/18 07:57:20
+          </td>
+          <td>
+            UndigesterWebXmlTest#testServlets()
+            is now working, reaching version <b>0.5</b>.<br/>
+            Fixed bugs #<a href="lite/bugzilla/show_bug.cgi?id=1">1</a>,
+            #<a href="http://lite/bugzilla/show_bug.cgi?id=2">2</a>,
+            #<a href="http://lite/bugzilla/show_bug.cgi?id=3">3</a>, and
+            #<a href="http://lite/bugzilla/show_bug.cgi?id=4">4</a>.
+          </td>
+        </tr>
+        <tr>
+          <td>
+            2004/03/17 18:20:00
+          </td>
+          <td>
+            UndigesterWebXmlTest#testSimpleServletAndWelcomeFile()
+            is now working correctly.
+          </td>
+        </tr>
+        <tr>
+          <td>
+            2004/03/17 12:06:07
+          </td>
+          <td>
+            Already working unit tests passed again, after branching
+            logic.<br/>
+            UndigesterWebXmlTest#testSimpleServletAndWelcomeFile()
+            is almost working.
+          </td>
+        </tr>
+        <tr>
+          <td>
+            2004/03/16 07:59:19
+          </td>
+          <td>
+            Implemented some logic to use the tree hierarchies: nodes
+            and rules, to find out whether a rule should be applied to
+            a concrete node.
+          </td>
+        </tr>
+        <tr>
+          <td>
+            2004/03/15 21:06:10
+          </td>
+          <td>
+            Early-access support for chainable rules, to resolve rule
+            conflicts. <br/>
+            Added new aspect to enforce access protection to
+            ChainableRule.
+          </td>
+        </tr>
+        <tr>
+          <td>
+            2004/03/12 08:07:50
+          </td>
+          <td>
+            Improved Undigester to perform a two-step process: first,
+            build the complete tree graph; second, apply remaining rules.
+          </td>
+        </tr>
+        <tr>
+          <td>
+            2004/03/11 08:10:40
+          </td>
+          <td>
+            Enhanced the build process to seamlessly support AspectJ.
+            Tracing and debug-enhancer aspects added.
+            Implemented first aspect.xml -> build.xml integration.
+          </td>
+        </tr>
+        <tr>
+          <td>
+            2004/03/10 08:58:40
+          </td>
+          <td>
+            Implemented an aspect to help debugging.
+          </td>
+        </tr>
+        <tr>
+          <td>
+            2004/03/09 06:41:23
+          </td>
+          <td>
+            Added new unit test, web.xml-oriented.
+          </td>
+        </tr>
+        <tr>
+          <td>
+            2004/03/08 08:13:43
+          </td>
+          <td>
+            Unit test passed: test3LevelArrayUnparse()
+            Bean classes used just for testing purposes refactored to
+            make them more meaningful.
+          </td>
+        </tr>
+        <tr>
+          <td>
+            2004/03/03 20:27:12
+          </td>
+          <td>
+            Unit test passed: test2LevelArrayUnparse()
+            Added index to child nodes to avoid attribute conflicts.
+          </td>
+        </tr>
+        <tr>
+          <td>
+            2004/03/03 07:45:40
+          </td>
+          <td>
+            Unit test passed: test2LevelUnparse()
+            Done some design refactoring.
+          </td>
+        </tr>
+        <tr>
+          <td>
+            2004/03/02 07:28:22
+          </td>
+          <td>
+            Unit test passed: testFlatMix2Unparse()
+          </td>
+        </tr>
+        <tr>
+          <td>
+            2004/03/02 07:22:12
+          </td>
+          <td>
+            Unit test passed: testFlatMixUnparse()
+          </td>
+        </tr>
+        <tr>
+          <td>
+            2004/03/02 07:12:45
+          </td>
+          <td>
+            Second unit test passed: testFlatUnparse()
+          </td>
+        </tr>
+        <tr>
+          <td>
+            2004/03/01 21:55:27
+          </td>
+          <td>
+            First unit test passed: testSimpleUnparse()
+          </td>
+        </tr>
+        <tr>
+          <td>
+            2004/02/29 20:57:11
+          </td>
+          <td>
+            Added basic tree browsing logic, a couple of rules and
+            their tests.
+          </td>
+        </tr>
+        <tr>
+          <td>
+            2004/02/27 14:36:36
+          </td>
+          <td>
+            A heavy redesign has been started.
+          </td>
+        </tr>
+        <tr>
+          <td>
+            2004/02/24 16:30:16
+          </td>
+          <td>
+            Maintenance release: cleaned direct precondition checks,
+            refactored methods, and fixed minor issues. Applied
+            Checkstyle over the classes as well.
+          </td>
+        </tr>
+        <tr>
+          <td>
+            2004/02/24 09:07:30
+          </td>
+          <td>
+            Used <b>ContractChecker</b> preconditions, and refactored
+           (simplified) the code accordingly. Some precondition
+           violations were detected and fixed.
+          </td>
+        </tr>
+        <tr>
+          <td>
+            2004/02/23 21:11:42
+          </td>
+          <td>
+            Added helper class, <b>UndigesterUtils</b>, to simplify
+            Undigester logic and free some of its responsibilities.
+          </td>
+        </tr>
+        <tr>
+          <td>
+            2004/02/22 12:05:02
+          </td>
+          <td>
+            Development resumed after releasing other projects such as
+            <b>AntMake</b> and <b>ContractChecker</b>, and working on
+            <b>QueryJ</b>.
+          </td>
+        </tr>
+        <tr>
+          <td>
+            2004/02/16 07:48:55
+          </td>
+          <td>
+            Code refactored to support ACMSL-Commons 0.5.4.
+            Classpath implemented using dependencies to avoid storing
+            binaries in CVS. Such dependencies are already managed by
+            Maven, but so far no Windows environment is using as
+            development workspace, so using symbolic links seem
+            appropiate till then.
+          </td>
+        </tr>
+        <tr>
+          <td>
+            05/06/2003
+          </td>
+          <td>
+            Added support for new features required by WebExtension.
+          </td>
+        </tr>
+        <tr>
+          <td>
+            30/05/2003
+          </td>
+          <td>
+            Finished the documentation, along with Maven files.
+          </td>
+        </tr>
+        <tr>
+          <td>
+            30/05/2003
+          </td>
+          <td>
+            Implemented a way to allow serailizing object properties
+            as stand-alone elements.
+          </td>
+        </tr>
+        <tr>
+          <td>
+            29/05/2003
+          </td>
+          <td>
+            Found in the Internet Betwixt, that provides the
+            functionalities we're implementing in Undigester.
+          </td>
+        </tr>
+        <tr>
+          <td>
+            27/05/2003
+          </td>
+          <td>
+            Both rules that manage multiplicity are tested
+            successfully.
+          </td>
+        </tr>
+        <tr>
+          <td>
+            20/05/2003
+          </td>
+          <td>
+            The basic code of the rules for managing object
+            collections, is defined: GetNextRule, GetNextIteratorRule
+            and GetNextArrayRule. It introduces some difficulties.
+          </td>
+        </tr>
+        <tr>
+          <td>
+            19/05/2003
+          </td>
+          <td>
+            Separated the name extraction logic to a stand-alone
+            rule. GetNameRule. Also, another basic rule is
+            implemented: GetPropertyRule.
+          </td>
+        </tr>
+        <tr>
+          <td>
+            18/05/2003
+          </td>
+          <td>
+            Finished the core classes of Undigester: Undigester, 
+            Rule and CommonRule. Now the basic usage is defined.
+          </td>
+        </tr>
+        <tr>
+          <td>
+            16/05/2003
+          </td>
+          <td>
+            Starting Undigester, taking notes of all development
+            issues, in a pseudo literate-programming way.
+          </td>
+        </tr>
+        <tr>
+          <td>
+            15/05/2003
+          </td>
+          <td>
+            Starting the Internet search for an API that support the
+            functional requirements needed to continue working in
+            webextension.
+          </td>
+        </tr>
+      </table>
+      
+    </section>
+
+  </body>
+</document>

@@ -1,0 +1,69 @@
+       Pi                     Pr             Output
+
+    ---------|              - - - - 
+    | WebApp |             | root  |
+    |---------              - - - - 
+                       branch 1 started
+                        --------------|
+                        | GetNameRule |
+                        |  "web-app"  |
+                        |--------------
+                                          |-----------------|
+                                          |    XmlElement   |
+                                          |    "web-app"    |
+                                          |-----------------|
+                       branch 1 exhausted
+                       branch 2 started
+                      -------------------|
+                      |   GetNextRule    |
+                      | "getDisplayName" |
+                      |-------------------
+  ----------------|
+  |     IdText    |
+  | "DisplayName" |
+  |----------------
+                       branch 2.1 started
+                       -----------------|
+                       |  GetNameRule   |
+                       | "display-name" |
+                       |-----------------
+                                          |--------------------|
+                                          |     XmlElement     |
+                                          |   "display-name"   |
+                                          |--------------------|
+                                          |     XmlElement     |
+                                          |     "web-app"      |
+                                          |--------------------|
+                     branch 2.1 exhausted
+                     branch 2.2 started
+                       -----------------|
+                       | CallMethodRule |
+                       |   "getText"    |
+                       |-----------------
+                                          |--------------------|
+                                          |     XmlElement     |
+                                          |   "display-name"   |
+                                          |    ~DisplayName~   |
+                                          |--------------------|
+                                          |     XmlElement     |
+                                          |     "web-app"      |
+                                          |--------------------|
+                      branch 2.2 exhausted
+                                          |--------------------|
+    ---------|                            |     XmlElement     |
+    | WebApp |                            |     "web-app"      |
+    |---------                            | ~<display-name>..  |
+                                          | ..</display-name>~ |
+                                          |--------------------|
+                      branch 2 exhausted
+                      branch 3 started
+                     --------------------|
+                     |    GetNextRule    |
+                     | "getServletArray" |
+                     |--------------------
+  -------------|
+  | Collection |
+  |-------------
+                     --------------------|
+                     |    IterateRule    |
+                     |--------------------

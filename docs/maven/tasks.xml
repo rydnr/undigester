@@ -1,0 +1,169 @@
+<?xml version="1.0"?>
+<document>
+
+  <properties>
+    <title>Tasks</title>
+    <author email="jsanleandro@yahoo.es">Jose San Leandro</author>
+  </properties>
+
+  <body>
+    <section name="Tasks">
+      <p>
+        Lists of "to-do"s and ideas for future versions.
+      </p>
+
+      <subsection name="0.6">
+        <p>
+          <ul>
+            <li>
+              Add new features as they are needed by WebExtension.
+            </li>
+          </ul>
+        </p>
+      </subsection>
+      <subsection name="0.6b2">
+        <p>
+          <ul>
+            <li>
+              Fix bug #<a
+              href="http://lite/bugzilla/show_bug.cgi?id=123">123</a>.
+            </li>
+            <li>
+              Support for rule sets to group rules of a common DTD
+              together.
+            </li>
+          </ul>
+        </p>
+      </subsection>
+      <subsection name="0.6b1">
+        <p>
+          <ul>
+            <li>
+              Fix bug #<a
+              href="http://lite/bugzilla/show_bug.cgi?id=122">122</a>.
+            </li>
+          </ul>
+        </p>
+      </subsection>
+      <subsection name="0.5">
+        <p>
+          <ul>
+            <li>
+              Perform a heavy refactoring and a complete redesign of
+              the project.
+            </li>
+            <li>
+              Enhance the development process to seamlessly use
+              AspectJ.
+            </li>
+            <li>
+              Make UndigesterWebXmlTest#testServlets() test case be
+              passed.
+            </li>
+          </ul>
+        </p>
+      </subsection>
+      <subsection name="0.5b14">
+        <p>
+          <ul>
+            <li>
+              Make UndigesterTest#testSimpleServletAndWelcomeFile()
+              test cases work.
+            </li>
+          </ul>
+        </p>
+      </subsection>
+      <subsection name="0.5b10">
+        <p>
+          <ul>
+            <li>
+              Make UndigesterTest test cases work.
+            </li>
+          </ul>
+        </p>
+      </subsection>
+      <subsection name="0.4.2">
+        <p>
+          <ul>
+            <li>
+              Use <b>ContractChecker</b> and fix any precondition
+              violations.
+            </li>
+          </ul>
+        </p>
+      </subsection>
+      <subsection name="0.3.6">
+        <p>
+          <ul>
+            <li>
+              Refactor the classes to support new ACM-SL Commons 0.5.4.
+            </li>
+            <li>
+              Use symbolic links for binary dependencies.
+            </li>
+          </ul>
+        </p>
+      </subsection>
+      <subsection name="0.3.5">
+        <p>
+          <ul>
+            <li>
+              Complete the Maven documentation files.
+            </li>
+            <li>
+              Update "developingundigester" to explain the discover of
+              Betwixt library.
+            </li>
+            <li>
+              Bundle the whole application as a release.
+            </li>
+          </ul>
+        </p>
+      </subsection>
+      <subsection name="0.3">
+        <p>
+          <ul>
+            <li>
+              Manage object collections: GetNextRule,
+              GetNextIteratorRule, GetNextArrayRule.
+            </li>
+            <li>
+              Allow serializing properties as elements, not only as
+              attributes.
+            </li>
+            <li>
+              Write the functional requirements in
+              "developingundigester" document.
+            </li>
+          </ul>
+        </p>
+      </subsection>
+      <subsection name="0.2">
+        <p>
+          <ul>
+            <li>
+              Be able to serialize stand-alone objects with attributes.
+            </li>
+            <li>
+              Separate the name extraction logic from the Undigester
+              class. Use a GetNameRule instead.
+            </li>
+          </ul>
+        </p>
+      </subsection>
+      <subsection name="0.1">
+        <p>
+          <ul>
+            <li>
+              Define the basic classes (Undigester, rules, etc.).
+            </li>
+            <li>
+              Implement the most simple methods.
+            </li>
+          </ul>
+        </p>
+      </subsection>
+    </section>
+
+  </body>
+</document>

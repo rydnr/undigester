@@ -1,0 +1,394 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML
+><HEAD
+><TITLE
+>Requirements</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.7"><LINK
+REL="HOME"
+TITLE="Developing Undigester"
+HREF="index.html"><LINK
+REL="PREVIOUS"
+TITLE="Developing Undigester"
+HREF="index.html"><LINK
+REL="NEXT"
+TITLE="Development"
+HREF="x85.html"></HEAD
+><BODY
+CLASS="sect1"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+SUMMARY="Header navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>Developing Undigester</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="index.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+></TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="x85.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="sect1"
+><H1
+CLASS="sect1"
+><A
+NAME="AEN29"
+></A
+>2. Requirements</H1
+><DIV
+CLASS="sect2"
+><H2
+CLASS="sect2"
+><A
+NAME="AEN31"
+></A
+>2.1. Introduction</H2
+><P
+>&#13;        The requirements of a stable version of
+        <SPAN
+CLASS="emphasis"
+><I
+CLASS="emphasis"
+>Undigester</I
+></SPAN
+> are mainly functional. Some
+        non-functional requirements, like including documentation and tests in
+        a packaged bundle, should be accomplished as well, but the
+        main purpose of this module is to perform the serialization of
+        <SPAN
+CLASS="emphasis"
+><I
+CLASS="emphasis"
+>webtools</I
+></SPAN
+>-related Java objects into XML
+        documents, and that process doesn't need to get awesome
+        performance results, since it's part of the development stage
+        of a project. As it's launched as an <SPAN
+CLASS="emphasis"
+><I
+CLASS="emphasis"
+>Ant</I
+></SPAN
+>
+        task, it doesn't really affect if it takes one second more
+        than its optimized version.
+      </P
+><P
+>&#13;        Of course, performance analisys and optimization should always
+        be implemented. But that  effort is not scheduled to be
+        included in the first iterations of the project.
+      </P
+></DIV
+><DIV
+CLASS="sect2"
+><H2
+CLASS="sect2"
+><A
+NAME="AEN38"
+></A
+>2.2. Functional requirements</H2
+><P
+>&#13;        The funcional requirements are described next:
+        <P
+></P
+><UL
+><LI
+><P
+>&#13;              Provide a way of transforming content, available as Java
+              objects, to XML text.
+            </P
+></LI
+><LI
+><P
+>&#13;              Such content could be organized in a hierachical model,
+              including Java iterators or arrays. The module has to
+              provide support for handling them correctly. In other
+              words, there's no restriction on which objects could be
+              translated, but initially support of multiple children
+              is restricted to iterators and arrays.
+            </P
+></LI
+><LI
+><P
+>&#13;              ACM-SL's preferred way of parsing XML is using
+              <SPAN
+CLASS="emphasis"
+><I
+CLASS="emphasis"
+>Digester</I
+></SPAN
+>. That knowledge should be
+              useful for performing the opposite operation, so
+              <SPAN
+CLASS="emphasis"
+><I
+CLASS="emphasis"
+>Undigester</I
+></SPAN
+> should have a similar
+              API, although direct translation between
+              <SPAN
+CLASS="emphasis"
+><I
+CLASS="emphasis"
+>Digester</I
+></SPAN
+> rules and
+              <SPAN
+CLASS="emphasis"
+><I
+CLASS="emphasis"
+>Undigester</I
+></SPAN
+> entities is not required.
+            </P
+></LI
+></UL
+>
+      </P
+></DIV
+><DIV
+CLASS="sect2"
+><H2
+CLASS="sect2"
+><A
+NAME="AEN52"
+></A
+>2.3. Non-functional requirements</H2
+><P
+>&#13;        There're also non-functional requirements. Some of them are
+        part of ACM-SL development standard.
+        <P
+></P
+><UL
+><LI
+><P
+>&#13;              The project should have a <SPAN
+CLASS="emphasis"
+><I
+CLASS="emphasis"
+>Developing
+              Undigester</I
+></SPAN
+> document (usually this one), that
+              explains each decision that was taken while
+              developing the module.
+            </P
+></LI
+><LI
+><P
+>&#13;              The code should include Javadoc comments, and be
+              designed using patterns as much as possible. For that,
+              it'll use already existing ACM-SL packages.
+            </P
+></LI
+><LI
+><P
+>&#13;              The project should follow ACM-SL's folder structure.
+            </P
+></LI
+><LI
+><P
+>&#13;              <SPAN
+CLASS="emphasis"
+><I
+CLASS="emphasis"
+>Ant</I
+></SPAN
+> is the core tool for compiling,
+              building and testing the module. Also, the project's
+              <SPAN
+CLASS="emphasis"
+><I
+CLASS="emphasis"
+>Ant</I
+></SPAN
+> script will use the one that is
+              shared along all ACM-SL projects.
+            </P
+></LI
+><LI
+><P
+>&#13;              <SPAN
+CLASS="emphasis"
+><I
+CLASS="emphasis"
+>JUnit</I
+></SPAN
+> usage is highly desirable. At
+              least, it provides minimal confiability of the overall
+              quality.
+            </P
+></LI
+><LI
+><P
+>&#13;              As all other projects at ACM-SL,
+              <SPAN
+CLASS="emphasis"
+><I
+CLASS="emphasis"
+>Undigester</I
+></SPAN
+> should use
+              <SPAN
+CLASS="emphasis"
+><I
+CLASS="emphasis"
+>Bugzilla</I
+></SPAN
+> to register missing
+              features as well as eventual bugs. ACM-SL doesn't
+              associate growing bug count with bad quality, usually
+              the opposite, since the bugs and their state are known,
+              and therefore can be managed.
+            </P
+></LI
+><LI
+><P
+>&#13;              Recently, we introduced <SPAN
+CLASS="emphasis"
+><I
+CLASS="emphasis"
+>Maven</I
+></SPAN
+> as a
+              standard tool in future developments, so the project
+              should include the files required for
+              <SPAN
+CLASS="emphasis"
+><I
+CLASS="emphasis"
+>Maven</I
+></SPAN
+> to successfully generate all
+              reports. The <TT
+CLASS="function"
+>navigation.xml</TT
+> will be the
+              same as other ACM-SL projects.
+            </P
+></LI
+><LI
+><P
+>&#13;              The Java source files should respect ACM-SL coding
+              standards, and include such definition in a file called
+              <TT
+CLASS="function"
+>code-conventions.txt</TT
+>.
+            </P
+></LI
+><LI
+><P
+>&#13;              Last, but not least, as required by the GPL license, the
+              file <TT
+CLASS="function"
+>LICENSE.txt</TT
+> should be present as well.
+            </P
+></LI
+></UL
+>
+      </P
+></DIV
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+SUMMARY="Footer navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="index.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="index.html"
+ACCESSKEY="H"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="x85.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Developing Undigester</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+>&nbsp;</TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Development</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

@@ -1,0 +1,450 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!DOCTYPE article PUBLIC "-//OASIS//DTD DocBk XML V4.1.2//EN" "/usr/share/sgml/docbook/xml-dtd-4.1.2/docbookx.dtd" []>
+<article>
+  <title>Developing Undigester</title>
+  <sect1>
+    <title>Introduction</title>
+    <sect2>
+      <title>Background</title>
+      <para>
+        This project, called <emphasis>Undigester</emphasis>, is motivated
+        by some functionalities needed by <emphasis>webtools</emphasis>.
+      </para>
+      <para>
+        It has been separated from <emphasis>webtools</emphasis> itself
+        because this project is conceptually independent, and
+        could be useful in a number of situations (see following chapter).
+      </para>
+      <para>
+        It's defined to serialize arbitrary Java objects to XML, and, in
+        this sense, <emphasis>webextension</emphasis> acts as an
+        client API, using it to generate modified XML files related to
+        Java server-side technologies.
+      </para>
+    </sect2>
+    <sect2>
+      <title>Motivations</title>
+      <para>
+        A question anybody could ask about this project is
+        clearly: I understand <emphasis>Digester</emphasis>'s value to
+        provide a good way to manage XML parsing, using SAX for its
+        performance, and without having to worry about ugly,
+        error-prone code to manage SAX events. But, why do you need an
+        additional API for serializing objects in XML format, when
+        that's far less complex than parsing XML, and it's usually
+        accomplished by writing a <function>toXML()</function> method? After
+        all, Java's base class, <function>Object</function>, already provides
+        a kind of serialization method, <function>toString()</function>, that
+        all of us know about.
+      </para>
+      <para>
+        Of course, there's no explicit need of an API for translating
+        information stored in Java objects to XML format. It's true
+        that the <function>toXML()</function> method is usually implemented to
+        take into account the XML serialization logic. But,
+        personally, I don't see such approach follow the
+        <emphasis>GRASP</emphasis> patterns. A class that is modified
+        to include such method loses some of its initial purpose: its
+        responsibilities have grown and now include capabilities to
+        represent its information in a concrete format such as
+        XML. Also, it ties the class with the entities it's aware of
+        in one more way: it'll usually know that they have
+        defined a <function>toXML()</function> as well.
+      </para>
+      <para>
+        This <function>toXML()</function> propagation along the classes
+        introduces a certain amount of noise in the original design,
+        and allows us to answer the initial question back with another
+        one: Why, if you use an external API for creating an in-memory
+        representation of XML contents, don't you use another API for
+        generating the XML back?
+        One of the benefits of <emphasis>Digester</emphasis> is that
+        the Java objects that are created from the XML document
+        doesn't know about the details of how they were created. This
+        allows different ways of building them, without modifying
+        their code.
+      </para>
+      <para>
+        In this sense, the idea of not having an external API for XML
+        serialization sounds strange: Why do you darken your classes'
+        design for just performing a simple task as generating a XML
+        text with their contents? If the design has to be modified
+        outside its initial definition, it should be due to a better
+        reason than for concatenating strings.
+      </para>
+    </sect2>
+  </sect1>
+  <sect1>
+    <title>Requirements</title>
+    <sect2>
+      <title>Introduction</title>
+      <para>
+        The requirements of a stable version of
+        <emphasis>Undigester</emphasis> are mainly functional. Some
+        non-functional requirements, like including documentation and tests in
+        a packaged bundle, should be accomplished as well, but the
+        main purpose of this module is to perform the serialization of
+        <emphasis>webtools</emphasis>-related Java objects into XML
+        documents, and that process doesn't need to get awesome
+        performance results, since it's part of the development stage
+        of a project. As it's launched as an <emphasis>Ant</emphasis>
+        task, it doesn't really affect if it takes one second more
+        than its optimized version.
+      </para>
+      <para>
+        Of course, performance analisys and optimization should always
+        be implemented. But that  effort is not scheduled to be
+        included in the first iterations of the project.
+      </para>
+    </sect2>
+    <sect2>
+      <title>Functional requirements</title>
+      <para>
+        The funcional requirements are described next:
+        <itemizedlist>
+          <listitem>
+            <para>
+              Provide a way of transforming content, available as Java
+              objects, to XML text.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Such content could be organized in a hierachical model,
+              including Java iterators or arrays. The module has to
+              provide support for handling them correctly. In other
+              words, there's no restriction on which objects could be
+              translated, but initially support of multiple children
+              is restricted to iterators and arrays.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              ACM-SL's preferred way of parsing XML is using
+              <emphasis>Digester</emphasis>. That knowledge should be
+              useful for performing the opposite operation, so
+              <emphasis>Undigester</emphasis> should have a similar
+              API, although direct translation between
+              <emphasis>Digester</emphasis> rules and
+              <emphasis>Undigester</emphasis> entities is not required.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+    </sect2>
+    <sect2>
+      <title>Non-functional requirements</title>
+      <para>
+        There're also non-functional requirements. Some of them are
+        part of ACM-SL development standard.
+        <itemizedlist>
+          <listitem>
+            <para>
+              The project should have a <emphasis>Developing
+              Undigester</emphasis> document (usually this one), that
+              explains each decision that was taken while
+              developing the module.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              The code should include Javadoc comments, and be
+              designed using patterns as much as possible. For that,
+              it'll use already existing ACM-SL packages.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              The project should follow ACM-SL's folder structure.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              <emphasis>Ant</emphasis> is the core tool for compiling,
+              building and testing the module. Also, the project's
+              <emphasis>Ant</emphasis> script will use the one that is
+              shared along all ACM-SL projects.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              <emphasis>JUnit</emphasis> usage is highly desirable. At
+              least, it provides minimal confiability of the overall
+              quality.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              As all other projects at ACM-SL,
+              <emphasis>Undigester</emphasis> should use
+              <emphasis>Bugzilla</emphasis> to register missing
+              features as well as eventual bugs. ACM-SL doesn't
+              associate growing bug count with bad quality, usually
+              the opposite, since the bugs and their state are known,
+              and therefore can be managed.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Recently, we introduced <emphasis>Maven</emphasis> as a
+              standard tool in future developments, so the project
+              should include the files required for
+              <emphasis>Maven</emphasis> to successfully generate all
+              reports. The <function>navigation.xml</function> will be the
+              same as other ACM-SL projects.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              The Java source files should respect ACM-SL coding
+              standards, and include such definition in a file called
+              <function>code-conventions.txt</function>.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Last, but not least, as required by the GPL license, the
+              file <function>LICENSE.txt</function> should be present as well.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+    </sect2>
+  </sect1>
+  <sect1>
+    <title>Development</title>
+    <sect2>
+      <title>Defining concepts</title>
+      <sect3>
+        <title>Introduction</title>
+        <para>
+          What we wanna have is, as said before, a Digester-like API
+          for serizalizing Java objects into XML.
+        </para>
+        <para>
+          Imagine that we have an object, called <function>Person</function>,
+          that would like to represent in XML format. Such class has
+          some attributes, <function>name</function> and <function>age</function>.
+          In XML, such information could be represented as follows.
+          <programlisting>
+<![CDATA[
+          <person name="fred" age=23"/>
+]]>
+          </programlisting>
+          <emphasis>Digester</emphasis> simplifies the task of
+          building a <function>Person</function> object from previous XML.
+          <programlisting>
+          Digester digester = ...;
+          digester.push(person);
+          digester.addRule("person", new SetPropertiesRule());
+          </programlisting>
+          Alternatively, to serialize it, we'd like to have an API
+          that allows us a way of doing it like this:
+          <programlisting>
+          Undigester undigester = ...;
+          StringBuffer results = new StringBuffer();
+          undigester.push(person);
+          undigester.addRule(
+              new GetNameRule(
+                  new String[]{ Person.class.getName() }));
+
+          undigester.addRule(
+              new GetPropertyRule(
+                  new String[]{ Person.class.getName() },
+                  "name"));
+
+          undigester.addRule(
+              new GetPropertyRule(
+                  new String[]{ Person.class.getName() },
+                  "age"));
+
+          results.append(undigester.unparse());
+          </programlisting>
+          The reason of using the class name as the rule matching
+          condition is because, when Digester finds <![CDATA[<person>]]> in
+          the XML (that is, the rule is matched), the object in the
+          stack, of type <function>Person</function>, is filled up with
+          the attribute information in such XML. Therefore, the
+          inverse process needs to be able to match using any
+          criteria. The input information is now a tree of Java
+          objects, referred to each others by Java pointers. So a rule
+          matches or not depending on the current Java object being
+          parsed, so it has to be based on its available
+          meta-information, such as the class name.
+          There's another issue, though. For parsing, a Digester rule like
+          "a/b/c" identifies elements in a tree with grandparent
+          <function>a</function> and parent <function>b</function>. It's easy because
+          there's nothing special to do to find <function>b</function>
+          elements starting from <function>a</function>. However, for
+          unparsing, <function>a</function> could have a method of an
+          arbitrary name to retrieve <function>b</function>, typically
+          <function>getB()</function>, but we cannot make any assumption
+          here. When <function>b</function> is not just a single object, but
+          several, <function>getBs()</function> could return an array, a
+          Collection, Iterator, etc. That's why we need to include
+          more information to define rules.
+        </para>
+      </sect3>
+      <sect3>
+        <title>Undigester's stack</title>
+        <para>
+          Undigester uses a stack of Java objects, similar to
+          Digester. However, the results of the operation are returned
+          directly from the <function>unparse</function> method.
+        </para>
+        <para>
+          The main flow is described next.
+          <itemizedlist>
+            <listitem>
+              <para>
+                The top-most object of the stack is retrieved
+                (using a <function>peek</function> operation).
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The class of such object is used to find the rules
+                that are defined to process it. The searching method
+                just compares that the rule's class array corresponds
+                with the classes of the objects currently present in
+                the stack.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Each one of the matching rules process the object, by
+                calling <function>Rule.apply()</function>.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The result of such operation is managed in terms of
+                inner contents, attributes, closing XML elements, and so on.
+              </para>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </sect3>
+    </sect2>
+    <sect2>
+      <title>Difficulties</title>
+      <para>
+        The project included <emphasis>JUnit</emphasis> tests since
+        its initial steps, and that turned to be so important that
+        otherwise would delay the release of a stable version for
+        weeks.
+      </para>
+      <para>
+        The reason is because the core method of the API,
+        <function>Undigester.unparse()</function>, was heavily affected every
+        time a new feature was implemented, and already existing
+        <emphasis>JUnit</emphasis> tests alerted when latest fixes
+        made previous features stopped working.
+      </para>
+      <para>
+        Besides that, the major milestone was achieved when the
+        <function>GetNextRule</function> code was finally working. Such rule
+        manages the serialization of iterators and arrays. It
+        introduced several important changes to the existing
+        algorithm, and therefore the unit tests turned to be extremely
+        useful.
+      </para>
+    </sect2>
+  </sect1>
+  <sect1>
+    <title>Competitors</title>
+    <para>
+      This project introduced an interesting situation. Before
+      starting it, I looked in the Internet for already existing free
+      software libraries that provided the functional requirements
+      described in this document. Unfortunately, I wasn't able to find
+      any, but obviously I was wrong since there was at least one:
+      <emphasis>Jakarta Commons' Betwixt</emphasis>.
+    </para>
+    <sect2>
+      <title>Jakarta Commons Betwixt</title>
+      <para>
+        I wasn't aware of the fact that Betwixt existed until a friend
+        of mine noticed if Betwixt and gave me that information. That
+        happened just after most of the desired features were
+        accomplished.
+      </para>
+      <para>
+        Ironically, the bad news are not really that bad. It's just
+        knowing that I should have taken a deeper look at the
+        existing alternatives. But afterwards, the "discover" was
+        interesting, since I could evaluate if
+        <emphasis>Undigester</emphasis> introduced any advantage over
+        <emphasis>Betwixt</emphasis>, and if not no more effort would be
+        dedicated to improving it.
+      </para>
+      <para>
+        The decision is not fully taken, tough. It's clear that
+        <emphasis>Betwixt</emphasis> is a more mature module, and would
+        have been used from the beginning, but I'm not sure it follows
+        the same design as <emphasis>Digester</emphasis>. Although it
+        provides direct compatibility with <emphasis>Digester</emphasis>
+        rules, what is very useful, we'll keep
+        <emphasis>Undigester</emphasis> as XML serialization API because
+        it follows all ACM-SL standard and allows reuse of
+        <emphasis>Digester</emphasis>'s <emphasis>know-how</emphasis>.
+      </para>
+      <para>
+        In fact, the main application of
+        <emphasis>Undigester</emphasis>,
+        <emphasis>WebExtension</emphasis>, showed that
+        <emphasis>Undigester</emphasis> wasn't usable to serialize
+        <emphasis>web.xml</emphasis> information. The problem was
+        related to the serialization algorithm itself, and its
+        solution was not easy. Under such circumstances,
+        <emphasis>WebExtension</emphasis> begun testing how to use
+        <emphasis>Betwixt</emphasis>. After some attempts, the results
+        were not satisfactory for <emphasis>WebExtension</emphasis>
+        requirements. Without detailing the issues too much, it seemed
+        that <emphasis>Betwixt</emphasis> doesn't provide an easy way
+        of including PCDATA information provided by a class, without
+        explicit element for such class. Since some of the classes
+        used in <emphasis>WebExtension</emphasis> are reused and
+        expected to be serialized in different ways depending on the
+        information itself (not just the class), I found no way to
+        make it work. Additionally, at the time of this writing, after
+        searching at <emphasis>Betwixt</emphasis> mailing lists, I
+        haven't been able to figure out how to omit an element
+        representing an array or collection, only when such collection
+        is empty.
+      </para>
+      <para>
+        So I decided again to focus the effort on debugging the
+        recursive algorithm to find out how to solve
+        <emphasis>Undigester</emphasis> bug.
+      </para>
+    </sect2>
+  </sect1>
+  <sect1>
+    <title>Technical documentation</title>
+    <sect2>
+      <title>Introduction</title>
+      <para>
+        This chapter tries to describe in more detail the reasons
+        behind most important <emphasis>Undigester</emphasis>
+        classes.
+      </para>
+      <para>
+        Don't expect here Javadoc-like descriptions of the
+        classes. That's not the purpose. The idea is to clarify the
+        essential motivations and results of some of the classes. Not
+        only describing the final result, but also the initial
+        approach and its evolution.
+      </para>
+    </sect2>
+    <sect2>
+      <title>Class description</title>
+      <sect3>
+        <title>Rule</title>
+        <para>
+        </para>
+      </sect3>
+    </sect2>
+  </sect1>
+</article>
