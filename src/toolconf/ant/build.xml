@@ -331,25 +331,32 @@
         </tstamp>
 
         <!--
+         Reads some specific properties from an external property files.
+        -->
+        <property file="src/toolconf/ant/build.properties"/>
+        <property file="src/toolconf/ant/project.properties"/>
+        <property file="src/toolconf/ant/user.properties"/>
+
+        <!--
          Requests CVS to perform the keyword clean substitution.
         -->
-        <!--cvs command="update -kv src/toolconf/ant/build.properties"/-->
+        <cvs command="update -kv src/toolconf/ant/version.properties"/>
 
         <!--
          Reads some specific properties from an external property file.
         -->
-        <property file="src/toolconf/ant/build.properties"/>
+        <property file="src/toolconf/ant/version.properties"/>
 
         <!--
-         Removes the build.properties file to get rid of the sticky
+         Removes the version.properties file to get rid of the sticky
          keyword substitution setting.
         -->
-        <!--delete file="src/toolconf/ant/build.properties"/-->
+        <delete file="src/toolconf/ant/version.properties"/>
 
         <!--
-         Restores build.properties state.
+         Restores version.properties state.
         -->
-        <!--cvs command="update -A src/toolconf/ant/build.properties"/-->
+        <cvs command="update -A src/toolconf/ant/version.properties"/>
 
         <!--
          Displays some project information.
@@ -1393,39 +1400,18 @@
          Checks if junitdoclet.jar is available.
         -->
         <available
-            property="junitdoclet.jar.available"
-            file="junitdoclet.jar">
+          classname="com.objectfab.tools.junitdoclet.JUnitDoclet"
+          property="junitdoclet.jar.available"
+          classpathref="java.development.class.path"/>
 
-            <filepath>
-
-                <!--
-                 Tries to find it in the folder where the Ant add-ins
-                 are located.
-                -->
-                <path refid="java.development.class.path"/>
-
-            </filepath>
-
-        </available>
-
+        <echo>junitdoclet found? ${junitdoclet.jar.available}</echo>
         <!--
          Checks if junitdoclet-acmsl.jar is available.
         -->
         <available
-            property="junitdoclet-acmsl.jar.available"
-            file="junitdoclet-acmsl.jar">
-
-            <filepath>
-
-                <!--
-                 Tries to find it in the folder where the Ant add-ins
-                 are located.
-                -->
-                <path refid="java.development.class.path"/>
-
-            </filepath>
-
-        </available>
+          classname="org.acmsl.junitdoclet.AcmslNamingStrategy"
+          property="junitdoclet-acmsl.jar.available"
+          classpathref="java.development.class.path"/>
 
         <!--
          Checks if jalopy-ant.jar is available.
