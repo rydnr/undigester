@@ -1404,7 +1404,6 @@
           property="junitdoclet.jar.available"
           classpathref="java.development.class.path"/>
 
-        <echo>junitdoclet found? ${junitdoclet.jar.available}</echo>
         <!--
          Checks if junitdoclet-acmsl.jar is available.
         -->
