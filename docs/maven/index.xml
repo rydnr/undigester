@@ -70,7 +70,7 @@
           </td>
           <td>
             WebExtension has unhidden bug 
-            #<a href="lite/bugzilla/show_bug.cgi?id=122">122</a>, which is
+            #<a href="${issue.url}=122">122</a>, which is
             now solved.
           </td>
         </tr>
@@ -81,7 +81,7 @@
           <td>
             UndigesterWebXmlTest#testServlets()
             is now working, reaching version <b>0.5</b>.<br/>
-            Fixed bugs #<a href="lite/bugzilla/show_bug.cgi?id=1">1</a>,
+            Fixed bugs #<a href="${issue.url}id=1">1</a>,
             #<a href="${issue.url}2">2</a>,
             #<a href="${issue.url}3">3</a>, and
             #<a href="${issue.url}4">4</a>.
