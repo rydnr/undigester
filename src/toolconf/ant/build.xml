@@ -463,9 +463,14 @@
         <property name="license.dir" value="${docs.dir}/license"/>
 
         <!--
+         Dependencies base folder.
+        -->
+        <property name="dependencies.dir" value="${project.base.folder}/dependencies"/>
+
+        <!--
          Libraries base folder.
         -->
-        <property name="lib.dir" value="${project.base.folder}/lib"/>
+        <property name="lib.dir" value="${dependencies.dir}/lib"/>
 
         <!--
            ANTLR-specific libraries folder. Files under this folder are
@@ -3133,7 +3138,7 @@ cp -r ${war.libs} ${war.lib.temp.dir}
     -->
     <target
         name="unit.tests"
-        depends="init"
+        depends="compile"
         description="Executes all defined unit tests.">
 
         <property name="unit-test-path" refid="unit.test.class.path"/>
@@ -3259,7 +3264,7 @@ cp -r ${war.libs} ${war.lib.temp.dir}
     -->
     <target
         name="debug.unit.tests"
-        depends="init"
+        depends="compile"
         description="Debugs defined unit tests.">
 
         <property name="unit-test-path" refid="unit.test.class.path"/>
