@@ -2765,10 +2765,6 @@
         depends="junitdoclet"
         description="Executes all defined unit tests.">
 
-        <property name="unit-test-path" refid="unit.test.class.path"/>
-
-        <echo message="${unit-test-path}"/>
-
         <!--
          Actual JUnit invokation.
         -->
