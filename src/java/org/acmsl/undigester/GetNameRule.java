@@ -266,12 +266,14 @@ public class GetNameRule
             result = result.substring(0, result.indexOf("$"));
         }
 
+        /*
         if  (   (stringValidator.isEmpty(result))
              || (result.indexOf("$") > -1))
         {
             result = UNKNOWN_NAME;
         }
-        
+        */
+
         return result;
     }
 
