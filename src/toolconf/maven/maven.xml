@@ -23,6 +23,13 @@
 -->
 <project default="xdoc:jelly-transform" xmlns:ant="jelly:ant">
 
+  <preGoal name="site">
+
+    <!-- prepare the dependencies -->
+    <ant:ant antfile="../ant/dependencies.xml" target="manage.dependencies"/>
+
+  </preGoal>
+
   <preGoal name="xdoc:jelly-transform">
 
     <!--

@@ -86,7 +86,7 @@
     <dependency>
       <groupId>acmsl-commons</groupId>
       <artifactId>commons</artifactId>
-      <version>0.5.5</version>
+      <version>0.5.5b5</version>
       <url>http://www.acm-sl.org/</url>
     </dependency>
 
@@ -139,19 +139,19 @@
       </excludes>
       <resources>
         <resource>
-          <directory>${basedir}/dependencies/lib/java</directory>
+          <directory>../../../dependencies/lib/java</directory>
           <includes>
             <include>*</include>
           </includes>
         </resource>
         <resource>
-          <directory>${basedir}/dependencies/lib/java/runtime</directory>
+          <directory>../../../dependencies/lib/java/runtime</directory>
           <includes>
             <include>*</include>
           </includes>
         </resource>
         <resource>
-          <directory>${basedir}/dependencies/lib/java/unittest</directory>
+          <directory>../../../dependencies/lib/java/unittest</directory>
           <includes>
             <include>*</include>
           </includes>

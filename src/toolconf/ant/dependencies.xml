@@ -136,7 +136,12 @@
 
       <taskdef
         name="greebo"
-        classname="oevren.ant.greebo.FetchDependencyTask"/>
+        classname="oevren.ant.greebo.FetchDependencyTask">
+        <classpath>
+          <pathelement
+            location="${maven.dependencies.path}/ant/jars/ant-greebo-0.1b.jar"/>
+        </classpath>
+      </taskdef>
 
       <!-- Common dependencies -->
       <greebo dir="${dependencies.lib.java.dir}">
@@ -190,8 +195,8 @@
 
         <jarDependency
           name="junitdoclet"
-          version="1.0.3"
-          jar="junitdoclet-acmsl-1.0.3.jar"/>
+          version="1.0.2"
+          jar="junitdoclet-acmsl-1.0.2.jar"/>
 
         <jarDependency
           name="antmake"
@@ -204,27 +209,27 @@
           jar="contractchecker-0.4.7.jar"/>
 
         <jarDependency
-          name="aspectjrt"
+          name="aspectj"
           version="1.2"
           jar="aspectjrt-1.2.jar"/>
 
         <jarDependency
-          name="aspectjtools"
+          name="aspectj"
           version="1.2"
           jar="aspectjtools-1.2.jar"/>
 
         <jarDependency
-          name="ant-xerces"
+          name="ant"
           version="1.6.1"
-          jar="ant-1.6.1-xercesImpl.jar"/>
+          jar="ant-xercesImpl-1.6.1.jar"/>
 
         <jarDependency
-          name="ant-xml-apis"
+          name="ant"
           version="1.6.1"
-          jar="ant-1.6.1-xml-apis.jar"/>
+          jar="ant-xml-apis-1.6.1.jar"/>
 
         <jarDependency
-          name="junitdoclet-acmsl"
+          name="junitdoclet"
           version="1.0.2"
           jar="junitdoclet-acmsl-1.0.2.jar"/>
 
@@ -234,7 +239,7 @@
           jar="commons-beanutils-1.6.1.jar"/>
 
         <jarDependency
-          name="ant-doxygen"
+          name="ant"
           version="1.4"
           jar="ant_doxygen-1.4.jar"/>
 
@@ -250,7 +255,7 @@
 
       </greebo>
 
-      <!-- Runtime dependencies -->
+      <!-- Runtime dependencies
       <greebo dir="${dependencies.lib.java.runtime.dir}">
         <repository
           url="file:///${maven.dependencies.path}"
@@ -260,6 +265,7 @@
         <repository url="http://www.ibiblio.org/maven" type="maven"/>
 
       </greebo>
+      -->
 
       <!-- Unit test dependencies -->
       <greebo dir="${dependencies.lib.java.unittest.dir}">
@@ -274,6 +280,11 @@
           name="junit"
           version="3.8.1"
           jar="junit-3.8.1.jar"/>
+
+        <jarDependency
+          name="oro"
+          version="2.0.7"
+          jar="oro-2.0.7.jar"/>
 
       </greebo>
 
