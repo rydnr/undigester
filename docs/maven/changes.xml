@@ -5,21 +5,21 @@
     <author email="jsanleandro@yahoo.es">Jose San Leandro</author>
   </properties>
   <body>
-    <release version="undigester-0_6b1" date="$Date$">
+    <release version="undigester-0_6b2" date="$Date$">
       <action
         dev="$Author$"
         type="fix">
         WebExtension has unhidden bug 
-        #<a href="lite/bugzilla/show_bug.cgi?id=122">122</a>, which is
+        #<a href="${issue.url}122">122</a>, which is
         now solved.
       </action>
     </release>
-    <release version="undigester-0_6b2" date="$Date$">
+    <release version="undigester-0_6b1" date="$Date$">
       <action
         dev="chous"
         type="fix">
         Fixed bug #<a
-        href="http://lite/bugzilla/show_bug.cgi?id=123">123</a>.
+        href="${issue.url}123">123</a>.
       </action>
       <action
         dev="chous"
@@ -34,10 +34,10 @@
         type="fix">
         UndigesterWebXmlTest#testServlets()
         is now working, reaching version <b>0.5</b>.
-        Fixed bugs #<a href="lite/bugzilla/show_bug.cgi?id=1">1</a>,
-        #<a href="http://lite/bugzilla/show_bug.cgi?id=2">2</a>,
-        #<a href="http://lite/bugzilla/show_bug.cgi?id=3">3</a>, and
-        #<a href="http://lite/bugzilla/show_bug.cgi?id=4">4</a>.
+        Fixed bugs #<a href="${issue.url}1">1</a>,
+        #<a href="${issue.url}2">2</a>,
+        #<a href="${issue.url}3">3</a>, and
+        #<a href="${issue.url}4">4</a>.
       </action>
     </release>
     <release version="undigester-0_5b14" date="2004/03/17 18:19:42">
