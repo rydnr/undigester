@@ -50,7 +50,7 @@
           </td>
           <td>
             Fixed bug #<a
-            href="http://lite/bugzilla/show_bug.cgi?id=123">123</a>.<br/>
+            href="${issue.url}123">123</a>.<br/>
             Also, rules can be grouped together inside RuleSets, so
             that complete DTD can be defined using single objects.
           </td>
@@ -82,9 +82,9 @@
             UndigesterWebXmlTest#testServlets()
             is now working, reaching version <b>0.5</b>.<br/>
             Fixed bugs #<a href="lite/bugzilla/show_bug.cgi?id=1">1</a>,
-            #<a href="http://lite/bugzilla/show_bug.cgi?id=2">2</a>,
-            #<a href="http://lite/bugzilla/show_bug.cgi?id=3">3</a>, and
-            #<a href="http://lite/bugzilla/show_bug.cgi?id=4">4</a>.
+            #<a href="${issue.url}2">2</a>,
+            #<a href="${issue.url}3">3</a>, and
+            #<a href="${issue.url}4">4</a>.
           </td>
         </tr>
         <tr>
