@@ -63,8 +63,10 @@ import org.acmsl.commons.regexpplugin.MalformedPatternException;
 import org.acmsl.commons.regexpplugin.Matcher;
 import org.acmsl.commons.regexpplugin.MatchResult;
 import org.acmsl.commons.regexpplugin.Pattern;
+import org.acmsl.commons.regexpplugin.RegexpEngine;
 import org.acmsl.commons.regexpplugin.RegexpEngineNotFoundException;
 import org.acmsl.commons.regexpplugin.RegexpManager;
+import org.acmsl.commons.regexpplugin.RegexpPluginMisconfiguredException;
 
 /*
  * Importing ACM-SL Commons.
@@ -220,7 +222,7 @@ public abstract class UndigesterUtils
         {
             synchronized (result)
             {
-                t_Compiler = RegexpManager.createCompiler();
+                t_Compiler = createCompiler(RegexpManager.getInstance());
 
                 if  (t_Compiler != null)
                 {
@@ -584,7 +586,7 @@ public abstract class UndigesterUtils
     {
         Collection t_cResults = new ArrayList();
 
-        Matcher t_Matcher = RegexpManager.createMatcher();
+        Matcher t_Matcher = createMatcher(RegexpManager.getInstance());
 
         MatchResult t_MatchResult = null;
 
@@ -618,7 +620,7 @@ public abstract class UndigesterUtils
     {
         StringBuffer t_sbResults = new StringBuffer();
 
-        Matcher t_Matcher = RegexpManager.createMatcher();
+        Matcher t_Matcher = createMatcher(RegexpManager.getInstance());
 
         MatchResult t_MatchResult = null;
 
@@ -1039,7 +1041,7 @@ public abstract class UndigesterUtils
     {
         StringBuffer t_sbResult = new StringBuffer();
 
-        Matcher t_Matcher = RegexpManager.createMatcher();
+        Matcher t_Matcher = createMatcher(RegexpManager.getInstance());
 
         MatchResult t_MatchResult = null;
 
@@ -1277,5 +1279,59 @@ public abstract class UndigesterUtils
         result.append("" + node.getIndex());
 
         return result.toString();
+    }
+
+    /**
+     * Creates a compiler instance.
+     * @param regexpManager the RegexpManager instance.
+     * @return such instance.
+     * @throws RegexpEngineNotFoundException if the selected
+     * engine is not found.
+     * @trhows RegexpPluginMisconfiguredException if
+     * RegexpPlugin cannot get correctly configured.
+     */
+    protected static Compiler createCompiler(
+        final RegexpManager regexpManager)
+      throws  RegexpEngineNotFoundException,
+              RegexpPluginMisconfiguredException
+    {
+        return createCompiler(regexpManager.getEngine());
+    }
+
+    /**
+     * Creates a compiler instance.
+     * @param regexpManager the RegexpManager instance.
+     * @return such instance.
+     */
+    protected static Compiler createCompiler(final RegexpEngine regexpEngine)
+    {
+        return regexpEngine.createCompiler();
+    }
+
+    /**
+     * Creates a matcher instance.
+     * @param regexpManager the RegexpManager instance.
+     * @return such instance.
+     * @throws RegexpEngineNotFoundException if the selected
+     * engine is not found.
+     * @trhows RegexpPluginMisconfiguredException if
+     * RegexpPlugin cannot get correctly configured.
+     */
+    protected synchronized Matcher createMatcher(
+        final RegexpManager regexpManager)
+      throws  RegexpEngineNotFoundException,
+              RegexpPluginMisconfiguredException
+    {
+        return createMatcher(regexpManager.getEngine());
+    }
+
+    /**
+     * Creates a matcher instance.
+     * @param regexpManager the RegexpManager instance.
+     * @return such instance.
+     */
+    protected Matcher createMatcher(final RegexpEngine regexpEngine)
+    {
+        return regexpEngine.createMatcher();
     }
 }

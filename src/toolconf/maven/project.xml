@@ -4,7 +4,7 @@
   <name>Undigester</name>
   <id>undigester</id>
   <groupId>org.acmsl.undigester</groupId>
-  <currentVersion>0.6b3</currentVersion>
+  <currentVersion>0.6b2</currentVersion>
   <organization>
     <name>ACM S.L.</name>
     <url>http://maven.acm-sl.org/</url>
@@ -42,7 +42,13 @@
     </url>
   </repository>
 
-  <versions/>
+  <versions>
+    <version>
+      <id>0.6b2</id>
+      <name>0.6b2</name>
+      <tag>undigester-0_6b2</tag>
+    </version>
+  </versions>
 
   <mailingLists>
     <mailingList>
@@ -86,7 +92,7 @@
     <dependency>
       <groupId>acmsl-commons</groupId>
       <artifactId>commons</artifactId>
-      <version>0.5.5b5</version>
+      <version>0.5.6</version>
       <url>http://www.acm-sl.org/</url>
       <properties>
         <required.to.compile>true</required.to.compile>
