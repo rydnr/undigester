@@ -260,19 +260,20 @@ public class GetNameRule
              || (result.indexOf("$") > -1)
              || (result.equals(UNKNOWN_NAME)))
         */
-        if  (   (!stringValidator.isEmpty(result))
-             && (result.indexOf("$") > -1))
+        if  (!stringValidator.isEmpty(result)
         {
-            result = result.substring(0, result.indexOf("$"));
+            int t_iDollarPosition = result.indexOf("$");
+
+            if  (t_iDollarPosition > -1)
+            {
+                result = result.substring(0, t_iDollarPosition);
+            }
         }
 
-        /*
-        if  (   (stringValidator.isEmpty(result))
-             || (result.indexOf("$") > -1))
+        if  (stringValidator.isEmpty(result))
         {
             result = UNKNOWN_NAME;
         }
-        */
 
         return result;
     }
