@@ -255,6 +255,8 @@ public class GetNameRule
             }
         }
 
+        int t_iDollarPosition = -1;
+
         /*
         if  (   (stringValidator.isEmpty(result))
              || (result.indexOf("$") > -1)
@@ -262,7 +264,7 @@ public class GetNameRule
         */
         if  (!stringValidator.isEmpty(result))
         {
-            int t_iDollarPosition = result.indexOf("$");
+            t_iDollarPosition = result.indexOf("$");
 
             if  (t_iDollarPosition > -1)
             {
@@ -270,7 +272,13 @@ public class GetNameRule
             }
         }
 
-        if  (stringValidator.isEmpty(result))
+        if  (!stringValidator.isEmpty(result))
+        {
+            t_iDollarPosition = result.indexOf("$");
+        }
+
+        if  (   (stringValidator.isEmpty(result))
+             || (t_iDollarPosition > -1))
         {
             result = UNKNOWN_NAME;
         }
