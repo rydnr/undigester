@@ -255,9 +255,13 @@ public class GetNameRule
             }
         }
 
+        /*
         if  (   (stringValidator.isEmpty(result))
              || (result.indexOf("$") > -1)
              || (result.equals(UNKNOWN_NAME)))
+        */
+        if  (   (!stringValidator.isEmpty(result))
+             && (result.indexOf("$") > -1))
         {
             result = result.substring(0, result.indexOf("$"));
         }
