@@ -260,7 +260,7 @@ public class GetNameRule
              || (result.indexOf("$") > -1)
              || (result.equals(UNKNOWN_NAME)))
         */
-        if  (!stringValidator.isEmpty(result)
+        if  (!stringValidator.isEmpty(result))
         {
             int t_iDollarPosition = result.indexOf("$");
 
