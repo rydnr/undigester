@@ -107,15 +107,15 @@ public class UndigesterSuite
     suite =
     new TestSuite("unittests.org.acmsl.undigester");
     
+    suite.addTestSuite(unittests.org.acmsl.undigester.RuleSetTest.class);
+    suite.addTestSuite(unittests.org.acmsl.undigester.TreeNodeTest.class);
     suite.addTestSuite(unittests.org.acmsl.undigester.GetNameRuleTest.class);
+    suite.addTestSuite(unittests.org.acmsl.undigester.UndigesterTest.class);
     suite.addTestSuite(unittests.org.acmsl.undigester.ToStringRuleTest.class);
     suite.addTestSuite(unittests.org.acmsl.undigester.TreeVisitorTest.class);
-    suite.addTestSuite(unittests.org.acmsl.undigester.UndigesterTest.class);
-    suite.addTestSuite(unittests.org.acmsl.undigester.RuleSetTest.class);
     suite.addTestSuite(unittests.org.acmsl.undigester.GetNextRuleTest.class);
-    suite.addTestSuite(unittests.org.acmsl.undigester.GetPropertyRuleTest.class);
-    suite.addTestSuite(unittests.org.acmsl.undigester.TreeNodeTest.class);
     suite.addTestSuite(unittests.org.acmsl.undigester.CallMethodRuleTest.class);
+    suite.addTestSuite(unittests.org.acmsl.undigester.GetPropertyRuleTest.class);
     
     suite.addTest(unittests.org.acmsl.undigester.utils.UtilsSuite.suite());
     
